@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DealDesk Pro</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:#0D0F14;color:#E8EAF0;min-height:100vh;}
+:root{--bg:#0D0F14;--surface:#161921;--surface2:#1E2230;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);--accent:#4F8EF7;--green:#34C97D;--amber:#F5A623;--red:#F06054;--text:#E8EAF0;--muted:#7A7F96;--dim:#2E3347;}
+
+.signin-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0D0F14;}
+.signin-card{background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:48px 40px;width:420px;text-align:center;}
+.signin-eyebrow{font-size:10px;font-weight:500;color:var(--muted);letter-spacing:1.8px;text-transform:uppercase;margin-bottom:8px;}
+.signin-title{font-size:26px;font-weight:600;letter-spacing:-0.5px;margin-bottom:6px;}
+.signin-title span{color:var(--accent);}
+.signin-sub{font-size:13px;color:var(--muted);margin-bottom:32px;line-height:1.6;}
+.signin-divider{height:1px;background:var(--border);margin:24px 0;}
+.signin-note{font-size:11px;color:var(--dim);line-height:1.6;}
+#g_id_signin{display:flex;justify-content:center;}
+
+/* loading overlay */
+.load-overlay{position:fixed;inset:0;background:rgba(13,15,20,0.85);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:999;gap:14px;}
+.load-spinner{width:32px;height:32px;border:3px solid rgba(79,142,247,0.2);border-top-color:var(--accent);border-radius:50%;animation:spin 0.7s linear infinite;}
+.load-label{font-size:13px;color:var(--muted);}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+.app{display:grid;grid-template-columns:230px 1fr;min-height:100vh;}
+.sidebar{background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto;}
+.logo{padding:22px 20px 20px;border-bottom:1px solid var(--border);}
+.logo-ey{font-size:10px;font-weight:500;color:var(--muted);letter-spacing:1.8px;text-transform:uppercase;}
+.logo-title{font-size:17px;font-weight:600;margin-top:4px;letter-spacing:-0.3px;}
+.logo-title span{color:var(--accent);}
+.nav{padding:12px 0;flex:1;}
+.nav-sec{padding:10px 20px 4px;font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:1.2px;font-weight:500;}
+.nav-item{display:flex;align-items:center;gap:10px;padding:8px 20px;font-size:13px;color:var(--muted);cursor:pointer;transition:all 0.12s;border-left:2px solid transparent;}
+.nav-item svg{width:14px;height:14px;flex-shrink:0;}
+.nav-item:hover{color:var(--text);background:rgba(255,255,255,0.03);}
+.nav-item.active{color:var(--accent);background:rgba(79,142,247,0.07);border-left-color:var(--accent);}
+.sidebar-user{padding:12px 16px;border-top:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+.u-av{width:30px;height:30px;border-radius:50%;background:rgba(79,142,247,0.2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--accent);flex-shrink:0;overflow:hidden;}
+.u-av img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+.u-nm{font-size:12px;font-weight:500;}
+.u-em{font-size:10px;color:var(--muted);}
+.so-btn{margin-left:auto;font-size:11px;color:var(--muted);cursor:pointer;padding:3px 7px;border-radius:4px;border:1px solid transparent;background:transparent;font-family:inherit;}
+.so-btn:hover{color:var(--red);border-color:rgba(240,96,84,0.3);}
+
+.main{overflow-y:auto;min-height:100vh;}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;border-bottom:1px solid var(--border);background:rgba(22,25,33,0.97);position:sticky;top:0;z-index:20;}
+.topbar h1{font-size:15px;font-weight:600;}
+.topbar p{font-size:12px;color:var(--muted);margin-top:2px;}
+
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:7px;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.12s;border:1px solid var(--border2);background:transparent;color:var(--text);font-family:'DM Sans',sans-serif;white-space:nowrap;}
+.btn:hover{background:rgba(255,255,255,0.05);}
+.btn:active{transform:scale(0.98);}
+.btn:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:#fff;}
+.btn-primary:hover{background:#6AA0F9;}
+.btn-sm{padding:5px 11px;font-size:12px;}
+.btn-ghost{border-color:transparent;color:var(--muted);}
+.btn-ghost:hover{color:var(--text);background:rgba(255,255,255,0.04);}
+.btn-danger{border-color:rgba(240,96,84,0.4);color:var(--red);}
+.btn-danger:hover{background:rgba(240,96,84,0.08);}
+.btn-success{background:var(--green);border-color:var(--green);color:#fff;}
+.btn-success:hover{background:#45D98A;}
+
+.content{padding:24px 32px 48px;}
+.deal-header{display:flex;gap:16px;margin-bottom:20px;align-items:stretch;}
+.code-card{background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:14px 18px;min-width:170px;display:flex;flex-direction:column;justify-content:center;}
+.code-lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px;}
+.code-val{font-family:'DM Mono',monospace;font-size:17px;font-weight:500;color:var(--accent);margin-top:5px;}
+.code-dt{font-size:10px;color:var(--dim);margin-top:5px;font-family:'DM Mono',monospace;}
+
+.mrow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;flex:1;}
+.mc{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;}
+.ml{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.9px;}
+.mv{font-size:21px;font-weight:600;margin-top:6px;font-family:'DM Mono',monospace;}
+.ms{font-size:11px;color:var(--muted);margin-top:4px;}
+.cg{color:var(--green);}.ca{color:var(--amber);}.cr{color:var(--red);}.cb{color:var(--accent);}.cm{color:var(--muted);}
+
+.sec{background:var(--surface);border:1px solid var(--border);border-radius:10px;margin-bottom:16px;overflow:hidden;}
+.sh{display:flex;align-items:center;justify-content:space-between;padding:13px 20px;border-bottom:1px solid var(--border);}
+.st{font-size:13px;font-weight:600;}
+.ss{font-size:11px;color:var(--muted);margin-top:2px;}
+.sb{padding:20px;}
+
+.atrack{display:flex;align-items:flex-start;position:relative;padding:8px 0;}
+.astep{flex:1;display:flex;flex-direction:column;align-items:center;position:relative;z-index:1;}
+.acirc{width:34px;height:34px;border-radius:50%;border:2px solid var(--dim);background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--muted);transition:all 0.2s;}
+.acirc.done{border-color:var(--green);background:rgba(52,201,125,0.12);color:var(--green);}
+.acirc.active{border-color:var(--accent);background:rgba(79,142,247,0.12);color:var(--accent);box-shadow:0 0 0 4px rgba(79,142,247,0.1);}
+.albl{text-align:center;font-size:10px;color:var(--muted);margin-top:8px;text-transform:uppercase;letter-spacing:0.7px;max-width:80px;line-height:1.4;}
+.ats{text-align:center;font-size:9px;color:var(--dim);margin-top:4px;font-family:'DM Mono',monospace;max-width:90px;line-height:1.4;}
+.albl.act{color:var(--accent);}
+
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.fg3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+.ff{grid-column:1/-1;}
+.fld{display:flex;flex-direction:column;gap:5px;}
+.fld label{font-size:10px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:1px;}
+.fld input,.fld select,.fld textarea{background:var(--surface2);border:1px solid var(--border2);border-radius:6px;padding:9px 12px;font-size:13px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.12s;width:100%;}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--accent);}
+.fld textarea{resize:vertical;min-height:90px;line-height:1.6;}
+.fld input[readonly]{opacity:0.45;cursor:not-allowed;}
+.fld select option{background:#1E2230;}
+.fhint{font-size:10px;color:var(--dim);margin-top:3px;}
+
+.qtabs{display:flex;align-items:center;gap:6px;margin-bottom:18px;}
+.qtab{padding:6px 14px;font-size:12px;font-weight:500;border-radius:6px;cursor:pointer;color:var(--muted);transition:all 0.12s;border:1px solid transparent;background:transparent;font-family:'DM Sans',sans-serif;}
+.qtab:hover:not(.active){color:var(--text);background:rgba(255,255,255,0.04);}
+.qtab.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+
+.lt{width:100%;border-collapse:collapse;font-size:12.5px;}
+.lt th{text-align:left;padding:7px 10px;color:var(--muted);font-weight:500;font-size:10px;text-transform:uppercase;letter-spacing:0.8px;border-bottom:1px solid var(--border);white-space:nowrap;}
+.lt td{padding:7px 10px;border-bottom:1px solid var(--border);vertical-align:middle;}
+.lt tbody tr:last-child td{border-bottom:none;}
+.lt tfoot td{border-top:1px solid var(--border2);padding:9px 10px;}
+.lt input,.lt select{background:var(--surface2);border:1px solid transparent;border-radius:5px;padding:5px 8px;font-size:12px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.12s;width:100%;}
+.lt input:focus,.lt select:focus{border-color:var(--accent);}
+.tr{text-align:right;}
+.mono{font-family:'DM Mono',monospace;}
+
+.epills{display:flex;flex-wrap:wrap;gap:6px;min-height:24px;}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:500;}
+.pe{background:rgba(245,166,35,0.1);border:1px solid rgba(245,166,35,0.3);color:var(--amber);}
+.pr{cursor:pointer;opacity:0.55;font-size:14px;line-height:1;}
+.pr:hover{opacity:1;}
+
+.exsec{border-color:rgba(79,142,247,0.25);}
+.exhdr{background:rgba(79,142,247,0.05);}
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.srow{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--border);font-size:12px;}
+.srow:last-child{border-bottom:none;}
+.sl{color:var(--muted);}.sv{font-weight:500;text-align:right;}
+.divider{height:1px;background:var(--border);margin:16px 0;}
+
+.badge{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:500;}
+.badge-draft{background:rgba(122,127,150,0.12);color:var(--muted);border:1px solid rgba(122,127,150,0.25);}
+.badge-pending{background:rgba(79,142,247,0.1);color:var(--accent);border:1px solid rgba(79,142,247,0.25);}
+.badge-approved{background:rgba(52,201,125,0.1);color:var(--green);border:1px solid rgba(52,201,125,0.25);}
+.badge-escalated{background:rgba(245,166,35,0.1);color:var(--amber);border:1px solid rgba(245,166,35,0.25);}
+
+.dlr{display:flex;align-items:center;gap:16px;padding:13px 20px;border-bottom:1px solid var(--border);cursor:pointer;transition:background 0.1s;}
+.dlr:hover{background:rgba(255,255,255,0.02);}
+.dlr:last-child{border-bottom:none;}
+
+.ct{width:100%;border-collapse:collapse;font-size:12.5px;}
+.ct th{text-align:left;padding:8px 12px;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:0.8px;border-bottom:1px solid var(--border);font-weight:500;}
+.ct td{padding:10px 12px;border-bottom:1px solid var(--border);}
+.ct tr:last-child td{border-bottom:none;}
+
+.tag{display:inline-block;padding:1px 7px;border-radius:4px;font-size:10px;font-weight:500;background:rgba(79,142,247,0.1);color:var(--accent);border:1px solid rgba(79,142,247,0.2);}
+.aib{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:500;background:rgba(123,92,240,0.12);border:1px solid rgba(123,92,240,0.25);color:#9B7FFF;}
+.sheets-badge{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:500;background:rgba(52,201,125,0.1);border:1px solid rgba(52,201,125,0.25);color:var(--green);}
+
+.empty{text-align:center;padding:40px 20px;color:var(--muted);font-size:13px;}
+.prod-loading{text-align:center;padding:30px;color:var(--muted);font-size:13px;}
+.prod-error{background:rgba(240,96,84,0.08);border:1px solid rgba(240,96,84,0.2);border-radius:7px;padding:12px 16px;font-size:12px;color:var(--red);margin-bottom:12px;}
+
+.toast{position:fixed;bottom:24px;right:24px;background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:12px 18px;font-size:13px;z-index:9999;display:none;max-width:340px;line-height:1.5;}
+.toast.show{display:block;}
+.toast.success{border-color:rgba(52,201,125,0.4);}
+.toast.error{border-color:rgba(240,96,84,0.4);}
+.spinner{display:inline-block;width:12px;height:12px;border:2px solid rgba(255,255,255,0.25);border-top-color:#fff;border-radius:50%;animation:spin 0.6s linear infinite;}
+.lbar{height:2px;background:var(--dim);border-radius:1px;overflow:hidden;margin-top:6px;}
+.lfill{height:100%;background:var(--accent);border-radius:1px;width:0;transition:width 0.3s;}
+.sstat{display:inline-flex;align-items:center;gap:6px;font-size:11px;padding:4px 10px;border-radius:20px;}
+.sstat.on{background:rgba(52,201,125,0.1);color:var(--green);border:1px solid rgba(52,201,125,0.25);}
+.sstat.off{background:rgba(122,127,150,0.1);color:var(--muted);border:1px solid rgba(122,127,150,0.2);}
+.sdot{width:6px;height:6px;border-radius:50%;background:currentColor;}
+</style>
+</head>
+<body>
+
+<!-- SIGN-IN -->
+<div class="signin-screen" id="signin-screen">
+  <div class="signin-card">
+    <div class="signin-eyebrow">Deal Management</div>
+    <div class="signin-title">Deal<span>Desk</span> Pro</div>
+    <div class="signin-sub">Sign in with your Google account to access the deal analysis tool. Products load live from your Google Sheet. Submissions save automatically.</div>
+    <div id="g_id_signin"></div>
+    <div class="signin-divider"></div>
+    <div class="signin-note">Your Google account is used only to authenticate access and read/write your connected Google Sheets.</div>
+  </div>
+</div>
+
+<!-- APP -->
+<div class="app" id="app" style="display:none;">
+  <aside class="sidebar">
+    <div class="logo"><div class="logo-ey">Deal Management</div><div class="logo-title">Deal<span>Desk</span> Pro</div></div>
+    <nav class="nav">
+      <div class="nav-sec">Workspace</div>
+      <div class="nav-item active" id="nav-new" onclick="V('new')"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M8 5v6M5 8h6"/></svg>New Deal</div>
+      <div class="nav-item" id="nav-sub" onclick="V('sub')"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4h10M3 8h10M3 12h6"/></svg>All Deals</div>
+      <div class="nav-sec">Reference</div>
+      <div class="nav-item" id="nav-cat" onclick="V('cat')"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="2.5" rx="0.5"/><rect x="2" y="7" width="12" height="2.5" rx="0.5"/><rect x="2" y="11" width="12" height="2.5" rx="0.5"/></svg>Product Catalog</div>
+      <div class="nav-item" id="nav-trm" onclick="V('trm')"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2h10a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V3a1 1 0 011-1zM5 6h6M5 9h4"/></svg>Non-Standard Terms</div>
+      <div class="nav-item" id="nav-tir" onclick="V('tir')"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4z"/></svg>Approval Tiers</div>
+      <div class="nav-sec">Settings</div>
+      <div class="nav-item" id="nav-set" onclick="V('set')"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="2.5"/><path d="M8 2v1M8 13v1M2 8h1M13 8h1M3.5 3.5l.7.7M11.8 11.8l.7.7M11.8 4.2l-.7.7M4.2 11.8l-.7.7"/></svg>Settings</div>
+    </nav>
+    <div class="sidebar-user">
+      <div class="u-av" id="sav">?</div>
+      <div><div class="u-nm" id="snm">—</div><div class="u-em" id="sem">—</div></div>
+      <button class="so-btn" onclick="signOut()">Sign out</button>
+    </div>
+  </aside>
+  <main class="main" id="main"></main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// CONFIG
+// ═══════════════════════════════════════════════════════
+const CID = '73494184846-arhdc818umkgqcsrhuv1k8c0i14viavm.apps.googleusercontent.com';
+const SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
+
+// ── YOUR PRODUCT CATALOGUE SHEET ──
+const PRODUCT_SHEET_ID  = '1tv_WzllV5yepZ0zsPq-cYC1ZfhsNQPsdQCd-5INeV5U';
+const PRODUCT_TAB       = 'Product Catalogue';
+
+// ── YOUR DEAL SUBMISSIONS SHEET (set in Settings) ──
+let SUBMISSIONS_SHEET_ID = '';
+let SUBMISSIONS_TAB      = 'Deal Submissions';
+
+// ═══════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════
+let token       = null;
+let tokenClient = null;
+let user        = null;
+let PRODS       = [];      // loaded live from Sheets
+let prodsLoaded = false;
+let prodsError  = null;
+let deals       = [];
+let view        = 'new';
+let deal        = null;
+
+const TERMS = [
+  'Custom SLA (sub-4hr response)','Extended payment terms (60+ days)','Unlimited liability cap',
+  'Multi-year price lock','Custom data residency','Source code escrow',
+  'Most Favoured Nation (MFN) clause','Audit rights beyond standard',
+  'Custom termination for convenience','Discounted renewal commitment',
+  'Volume ramp schedule','Custom infosec addendum',
+];
+
+const STAGES = [
+  {id:'submitted', lbl:'Submitted'},
+  {id:'dd_mgr',   lbl:'Deal Desk Mgr'},
+  {id:'director', lbl:'Director'},
+  {id:'finance',  lbl:'Finance'},
+  {id:'approved', lbl:'Approved'},
+];
+
+function reqStages(an){
+  const s=['submitted','dd_mgr'];
+  if(an.disc>15||an.tcv>250000||an.exc>0) s.push('director');
+  if(an.disc>30||an.tcv>750000||an.exc>2) s.push('finance');
+  s.push('approved');
+  return s;
+}
+
+// ═══════════════════════════════════════════════════════
+// DEAL STATE
+// ═══════════════════════════════════════════════════════
+function nd(){return{code:gc(),customer:'',account:'',owner:user?.name||'',segment:'',region:'',type:'New Business',quotes:[nq(1)],aq:0,exceptions:[],analysis:'',status:'Draft',log:[],created:new Date().toISOString(),submitted:null};}
+function nq(n){return{label:'Quote '+n,term:12,currency:'GBP',lines:[nl()]};}
+function nl(){return{sku:'',qty:1,np:''};}
+function gc(){const y=new Date().getFullYear().toString().slice(2),m=String(new Date().getMonth()+1).padStart(2,'0');return`DD-${y}${m}-${Math.floor(Math.random()*90000)+10000}`;}
+
+// ═══════════════════════════════════════════════════════
+// GOOGLE AUTH
+// ═══════════════════════════════════════════════════════
+window.onload = function(){
+  google.accounts.id.initialize({
+    client_id: CID,
+    callback: cred => {
+      const p = jwt(cred.credential);
+      user = {name:p.name, email:p.email, pic:p.picture, init:p.name.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2)};
+      sessionStorage.setItem('ddu', JSON.stringify(user));
+      boot();
+    },
+    auto_select: false,
+  });
+  google.accounts.id.renderButton(document.getElementById('g_id_signin'),{theme:'filled_blue',size:'large',shape:'rectangular',text:'signin_with',width:280});
+
+  tokenClient = google.accounts.oauth2.initTokenClient({
+    client_id: CID,
+    scope: SCOPE,
+    callback: async r => {
+      if(r.error){toast('Sheets auth failed: '+r.error,'error');return;}
+      token = r.access_token;
+      toast('Connected to Google Sheets ✓','success');
+      await loadProducts();
+      R();
+    },
+  });
+
+  const s = sessionStorage.getItem('ddu');
+  if(s){user=JSON.parse(s); boot();}
+};
+
+function jwt(t){
+  const b=t.split('.')[1].replace(/-/g,'+').replace(/_/g,'/');
+  return JSON.parse(decodeURIComponent(atob(b).split('').map(c=>'%'+('00'+c.charCodeAt(0).toString(16)).slice(-2)).join('')));
+}
+
+async function boot(){
+  document.getElementById('signin-screen').style.display='none';
+  document.getElementById('app').style.display='grid';
+  document.getElementById('snm').textContent = user.name;
+  document.getElementById('sem').textContent = user.email;
+  const av = document.getElementById('sav');
+  if(user.pic) av.innerHTML=`<img src="${user.pic}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />`;
+  else av.textContent = user.init;
+  if(!deal) deal = nd();
+
+  // Request Sheets token immediately on boot so products load straight away
+  tokenClient.requestAccessToken({prompt:''});
+}
+
+function signOut(){
+  google.accounts.id.disableAutoSelect();
+  sessionStorage.removeItem('ddu');
+  token=null; user=null; deal=null; deals=[]; PRODS=[]; prodsLoaded=false; prodsError=null;
+  document.getElementById('signin-screen').style.display='flex';
+  document.getElementById('app').style.display='none';
+}
+
+function authSheets(){
+  if(!token) tokenClient.requestAccessToken({prompt:'consent'});
+  else { toast('Already connected ✓','success'); loadProducts(); }
+}
+
+// ═══════════════════════════════════════════════════════
+// PRODUCT LOADER — reads live from Google Sheets
+// ═══════════════════════════════════════════════════════
+async function loadProducts(){
+  if(!token){ prodsError='Not authenticated with Google Sheets yet.'; R(); return; }
+  prodsLoaded = false;
+  prodsError  = null;
+  R(); // show loading state in quote builder
+
+  const range  = encodeURIComponent(`${PRODUCT_TAB}!A2:H500`);
+  const url    = `https://sheets.googleapis.com/v4/spreadsheets/${PRODUCT_SHEET_ID}/values/${range}`;
+
+  try{
+    const res  = await fetch(url, {headers:{'Authorization':'Bearer '+token}});
+    const data = await res.json();
+
+    if(!res.ok){
+      prodsError = data.error?.message || 'Failed to load products from Sheet.';
+      prodsLoaded = true;
+      R(); return;
+    }
+
+    const rows = data.values || [];
+    PRODS = rows
+      .filter(r => r[0] && r[1]) // must have SKU and Product name
+      .map(r => ({
+        sku:  (r[0]||'').trim(),
+        name: (r[1]||'').trim(),
+        cat:  (r[2]||'').trim(),
+        lp:   parseFloat((r[3]||'0').toString().replace(/[^0-9.]/g,'')),
+        cost: parseFloat((r[4]||'0').toString().replace(/[^0-9.]/g,'')),
+        sd:   parseFloat((r[5]||'0').toString().replace(/[^0-9.%]/g,'')),
+        // r[6] = Standard Margin — we ignore and calculate live
+        unit: (r[7]||'').trim(),
+      }));
+
+    prodsLoaded = true;
+    prodsError  = PRODS.length === 0 ? 'No products found in the Product Catalogue tab.' : null;
+    R();
+  } catch(e){
+    prodsError  = 'Network error: '+e.message;
+    prodsLoaded = true;
+    R();
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// FINANCIAL ENGINE
+// ═══════════════════════════════════════════════════════
+function cl(l){
+  const p = PRODS.find(x=>x.sku===l.sku);
+  if(!p) return {lt:0,nt:0,cost:0,gp:0,mg:0,disc:0,over:false};
+  const lt   = p.lp * l.qty;
+  const un   = (l.np!==''&&l.np!==null&&!isNaN(l.np)) ? parseFloat(l.np) : p.lp*(1-p.sd/100);
+  const nt   = un * l.qty;
+  const cost = p.cost * l.qty;
+  const gp   = nt - cost;
+  const mg   = nt>0 ? gp/nt*100 : 0;
+  const disc = lt>0 ? (1-nt/lt)*100 : 0;
+  const over = disc > p.sd+0.1;
+  return {lt,nt,cost,gp,mg,disc,over,p};
+}
+
+function cq(q){
+  let l=0,n=0,c=0;
+  q.lines.forEach(x=>{const r=cl(x);l+=r.lt;n+=r.nt;c+=r.cost;});
+  const gp=n-c,mg=n>0?gp/n*100:0,disc=l>0?(1-n/l)*100:0,tcv=n*q.term/12;
+  return{l,n,c,gp,mg,disc,tcv};
+}
+
+function cd(d){
+  let tl=0,tn=0,tc=0,tt=0,sw=0,sn=0;
+  d.quotes.forEach(q=>{
+    const qt=cq(q);tl+=qt.l;tn+=qt.n;tc+=qt.c;tt+=qt.tcv;
+    q.lines.forEach(l=>{const p=PRODS.find(x=>x.sku===l.sku);if(p){sw+=p.sd;sn++;}});
+  });
+  const gp=tn-tc,mg=tn>0?gp/tn*100:0,disc=tl>0?(1-tn/tl)*100:0,sda=sn>0?sw/sn:0,exc=d.exceptions.length;
+  const rs=reqStages({disc,tcv:tt,exc});
+  const pa=rs.includes('finance')?'Finance Sign-off':rs.includes('director')?'Director':'Deal Desk Manager';
+  const tc2=rs.includes('finance')?'var(--red)':rs.includes('director')?'var(--amber)':'var(--green)';
+  return{tl,tn,tc,gp,mg,disc,sda,tcv:tt,exc,rs,pa,tc:tc2};
+}
+
+// ═══════════════════════════════════════════════════════
+// FORMAT
+// ═══════════════════════════════════════════════════════
+const f  = (n,c='GBP')=>{if(isNaN(n)||n===null)return'—';const s=c==='USD'?'$':c==='EUR'?'€':'£';return s+Math.round(n).toLocaleString('en-GB');};
+const fp = n=>isNaN(n)?'—':n.toFixed(1)+'%';
+const ft = iso=>{if(!iso)return'';const d=new Date(iso);return d.toLocaleDateString('en-GB',{day:'numeric',month:'short'})+' '+d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});};
+const mc = m=>m<40?'cr':m<55?'ca':'cg';
+const dc = d=>d>30?'cr':d>15?'ca':'cg';
+
+// ═══════════════════════════════════════════════════════
+// VIEWS
+// ═══════════════════════════════════════════════════════
+function V(v){
+  view=v;
+  ['new','sub','cat','trm','tir','set'].forEach(k=>{const el=document.getElementById('nav-'+k);if(el)el.classList.toggle('active',k===v);});
+  R();
+}
+
+function R(){
+  const m=document.getElementById('main');if(!m)return;
+  if(view==='new') m.innerHTML=vNew();
+  else if(view==='sub')  m.innerHTML=vSub();
+  else if(view==='cat')  m.innerHTML=vCat();
+  else if(view==='trm')  m.innerHTML=vTrm();
+  else if(view==='tir')  m.innerHTML=vTir();
+  else if(view==='set')  m.innerHTML=vSet();
+}
+
+// ── NEW DEAL ───────────────────────────────────────────
+function vNew(){
+  const d=deal, an=cd(d), q=d.quotes[d.aq], ok=!!(token&&SUBMISSIONS_SHEET_ID);
+  return`
+  <div class="topbar">
+    <div><h1>New Deal Submission</h1><p>Code: <span style="font-family:'DM Mono',monospace;color:var(--accent);">${d.code}</span> · ${ok?`<span class="sstat on"><span class="sdot"></span>Sheets ready</span>`:`<span class="sstat off"><span class="sdot"></span>Configure Sheets in Settings</span>`}</p></div>
+    <div style="display:flex;gap:8px;">
+      <button class="btn btn-ghost" onclick="resetDeal()">Reset</button>
+      <button class="btn btn-success" onclick="submitDeal()">Submit for Approval →</button>
+    </div>
+  </div>
+  <div class="content">
+    <div class="deal-header">
+      <div class="code-card"><div class="code-lbl">Deal Code</div><div class="code-val">${d.code}</div><div class="code-dt">${new Date(d.created).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})}</div></div>
+      <div class="mrow">
+        <div class="mc"><div class="ml">Total TCV</div><div class="mv cb">${f(an.tcv)}</div><div class="ms">${d.quotes.length} quote${d.quotes.length!==1?'s':''}</div></div>
+        <div class="mc"><div class="ml">Net ARR</div><div class="mv">${f(an.tn)}</div><div class="ms">${fp(an.disc)} off list</div></div>
+        <div class="mc"><div class="ml">Gross Margin</div><div class="mv ${mc(an.mg)}">${fp(an.mg)}</div><div class="ms">${f(an.gp)} GP</div></div>
+        <div class="mc"><div class="ml">Approval Required</div><div class="mv" style="font-size:13px;margin-top:10px;color:${an.tc};font-family:'DM Sans',sans-serif;font-weight:600;">${an.pa}</div><div class="ms">${d.exceptions.length} exception${d.exceptions.length!==1?'s':''}</div></div>
+      </div>
+    </div>
+
+    <div class="sec"><div class="sh"><div><div class="st">Approval Progress</div><div class="ss">Auto-determined · timestamped at each stage</div></div><span class="badge badge-${d.status.toLowerCase().replace(/ /g,'-')}">${d.status}</span></div><div class="sb">${rTrack(d,an)}</div></div>
+
+    <div class="sec"><div class="sh"><div class="st">Deal Information</div></div><div class="sb"><div class="fg">
+      <div class="fld"><label>Customer Name *</label><input type="text" value="${d.customer}" placeholder="e.g. Acme Corporation Ltd" oninput="u('customer',this.value)" /></div>
+      <div class="fld"><label>Account / Salesforce ID</label><input type="text" value="${d.account}" placeholder="e.g. 0012X00000ABC" oninput="u('account',this.value)" /></div>
+      <div class="fld"><label>Deal Owner *</label><input type="text" value="${d.owner}" placeholder="e.g. Sarah Smith" oninput="u('owner',this.value)" /></div>
+      <div class="fld"><label>Deal Type</label><select onchange="u('type',this.value)">${['New Business','Renewal','Expansion','Upsell','Cross-sell','Re-sign'].map(t=>`<option ${d.type===t?'selected':''}>${t}</option>`).join('')}</select></div>
+      <div class="fld"><label>Segment</label><select onchange="u('segment',this.value)"><option value="" ${!d.segment?'selected':''}>Select...</option>${['Enterprise','Mid-Market','Commercial','SMB','Strategic'].map(s=>`<option ${d.segment===s?'selected':''}>${s}</option>`).join('')}</select></div>
+      <div class="fld"><label>Region</label><select onchange="u('region',this.value)"><option value="" ${!d.region?'selected':''}>Select...</option>${['EMEA','AMER','APAC','Global','LATAM'].map(r=>`<option ${d.region===r?'selected':''}>${r}</option>`).join('')}</select></div>
+    </div></div></div>
+
+    <div class="sec">
+      <div class="sh">
+        <div><div class="st">Quote Builder</div><div class="ss">Products loaded live from Google Sheets ${prodsLoaded&&!prodsError?`<span class="sheets-badge">↗ ${PRODS.length} products</span>`:''}</div></div>
+        <button class="btn btn-sm" onclick="addQ()">+ Add Quote</button>
+      </div>
+      <div class="sb">
+        <div class="qtabs">${d.quotes.map((qt,i)=>`<button class="qtab ${i===d.aq?'active':''}" onclick="swQ(${i})">${qt.label}</button>`).join('')}${d.quotes.length>1?`<button class="btn btn-sm btn-danger" onclick="rmQ(${d.aq})">Remove</button>`:''}</div>
+        ${rQBody(q,d.aq)}
+      </div>
+    </div>
+
+    ${d.quotes.length>1?rQComp(d):''}
+
+    <div class="sec"><div class="sh"><div><div class="st">Non-Standard Terms &amp; Exceptions</div><div class="ss">Each exception escalates approval tier</div></div>${d.exceptions.length>0?`<span class="badge badge-escalated">${d.exceptions.length} flagged</span>`:''}</div><div class="sb">
+      <div class="fld" style="max-width:380px;margin-bottom:14px;"><label>Add exception</label><select onchange="addE(this.value);this.value=''"><option value="">Select non-standard term...</option>${TERMS.filter(t=>!d.exceptions.includes(t)).map(t=>`<option value="${t}">${t}</option>`).join('')}</select></div>
+      <div class="epills">${d.exceptions.length===0?'<span style="font-size:12px;color:var(--dim)">No exceptions · standard terms apply</span>':''}${d.exceptions.map(e=>`<span class="pill pe">${e}<span class="pr" onclick="rmE(${JSON.stringify(e)})">×</span></span>`).join('')}</div>
+    </div></div>
+
+    <div class="sec"><div class="sh"><div><div class="st">Deal Management Analysis <span class="aib">↗ AI-assisted</span></div><div class="ss">Required before submission</div></div><button class="btn btn-sm" id="aib" onclick="genAI()">Generate Draft ↗</button></div><div class="sb">
+      <div id="ail" style="display:none;margin-bottom:10px;"><div style="font-size:12px;color:var(--muted)">Generating analysis...</div><div class="lbar"><div class="lfill" id="lf"></div></div></div>
+      <textarea id="fat" style="width:100%;background:var(--surface2);border:1px solid var(--border2);border-radius:7px;padding:12px;font-size:13px;color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.65;resize:vertical;min-height:100px;outline:none;" placeholder="Enter deal rationale — commercial justification, competitive context, strategic value, exception reasoning, recommendation..." oninput="u('analysis',this.value)">${d.analysis}</textarea>
+    </div></div>
+
+    ${d.customer?rExec(d,an):''}
+  </div>`;
+}
+
+// ── APPROVAL TRACK ─────────────────────────────────────
+function rTrack(d,an){
+  const req=an.rs, stgs=STAGES.filter(s=>req.includes(s.id)), done=d.log.map(l=>l.stage);
+  const pct=stgs.length>1?Math.min((done.length/(stgs.length-1))*100,100):0;
+  return`<div style="position:relative;"><div style="position:absolute;top:16px;left:4%;right:4%;height:2px;background:var(--dim);z-index:0;border-radius:1px;"><div style="height:100%;width:${pct}%;background:var(--green);border-radius:1px;transition:width 0.4s;"></div></div>
+  <div class="atrack">${stgs.map((s,i)=>{const lg=d.log.find(l=>l.stage===s.id),dn=!!lg,ac=!dn&&i===done.length;return`<div class="astep"><div class="acirc ${dn?'done':ac?'active':''}">${dn?'✓':(i+1)}</div><div class="albl ${ac?'act':''}">${s.lbl}</div><div class="ats">${lg?ft(lg.ts):ac?'Awaiting':''}</div></div>`;}).join('')}
+  </div></div>`;
+}
+
+// ── QUOTE BODY ─────────────────────────────────────────
+function rQBody(q,qi){
+  // Loading / error states
+  if(!prodsLoaded) return`<div class="prod-loading"><span class="spinner"></span>&nbsp; Loading products from Google Sheets...</div>`;
+  if(prodsError)   return`<div class="prod-error">⚠ ${prodsError} <button class="btn btn-sm" style="margin-left:12px;" onclick="loadProducts()">Retry</button></div>`;
+
+  const rows=q.lines.map((l,li)=>{
+    const c=cl(l);
+    const hp=l.np!==''&&l.np!==null&&!isNaN(l.np);
+    const stdHint=c.p?Math.round(c.p.lp*(1-c.p.sd/100)):'';
+    return`<tr>
+      <td style="min-width:210px;"><select onchange="uL(${qi},${li},'sku',this.value)">
+        <option value="">Choose product...</option>
+        ${PRODS.map(p=>`<option value="${p.sku}" ${l.sku===p.sku?'selected':''}>${p.name}</option>`).join('')}
+      </select></td>
+      <td style="width:60px;"><input type="number" min="1" step="1" value="${l.qty}" onchange="uL(${qi},${li},'qty',+this.value)" /></td>
+      <td class="mono" style="color:var(--muted);width:90px;">${c.p?f(c.p.lp):'—'}</td>
+      <td style="width:115px;"><input type="number" min="0" step="100" value="${hp?l.np:''}" placeholder="${stdHint}" title="Leave blank to use standard discount price" onchange="uL(${qi},${li},'np',this.value===''?'':+this.value)" /></td>
+      <td class="mono tr" style="width:90px;">${c.p?f(c.nt):'—'}</td>
+      <td class="tr" style="width:80px;">${c.p?`<span class="${c.over?'ca':'cm'}" style="font-size:12px;">${fp(c.disc)}${c.over?' ▲':''}</span>`:'—'}</td>
+      <td class="mono tr ${mc(c.mg)}" style="width:65px;">${c.p?fp(c.mg):'—'}</td>
+      <td style="width:34px;"><button class="btn btn-sm btn-danger" style="padding:4px 6px;" onclick="rmL(${qi},${li})">×</button></td>
+    </tr>`;
+  }).join('');
+
+  const qt=cq(q);
+  return`<div class="fg3" style="margin-bottom:16px;max-width:500px;">
+    <div class="fld"><label>Contract Term</label><select onchange="uQ(${qi},'term',+this.value)">${[12,24,36,48,60].map(m=>`<option value="${m}" ${q.term===m?'selected':''}>${m} months</option>`).join('')}</select></div>
+    <div class="fld"><label>Currency</label><select onchange="uQ(${qi},'currency',this.value)">${['GBP','USD','EUR'].map(c=>`<option ${q.currency===c?'selected':''}>${c}</option>`).join('')}</select></div>
+    <div class="fld"><label>Quote Label</label><input type="text" value="${q.label}" onchange="uQ(${qi},'label',this.value)" /></div>
+  </div>
+  <table class="lt"><thead><tr><th>Product</th><th>Qty</th><th>List Price</th><th>Negotiated Unit Price</th><th class="tr">Net Total</th><th class="tr">Discount</th><th class="tr">Margin</th><th></th></tr></thead>
+  <tbody>${rows}</tbody>
+  <tfoot>
+    <tr><td colspan="4" style="font-weight:600;font-size:13px;">Quote Total</td><td class="mono tr" style="font-weight:600;font-size:13px;">${f(qt.n)}</td><td class="tr ${dc(qt.disc)}" style="font-size:12px;font-weight:500;">${fp(qt.disc)}</td><td class="mono tr ${mc(qt.mg)}" style="font-weight:600;">${fp(qt.mg)}</td><td></td></tr>
+    <tr><td colspan="4" style="font-size:11px;color:var(--muted);">TCV over ${q.term} months</td><td class="mono tr cb" style="font-size:12px;font-weight:500;">${f(qt.tcv)}</td><td colspan="3"></td></tr>
+  </tfoot></table>
+  <div style="margin-top:12px;"><button class="btn btn-sm" onclick="addL(${qi})">+ Add Line Item</button></div>`;
+}
+
+function rQComp(d){
+  return`<div class="sec"><div class="sh"><div class="st">Quote Comparison</div></div><div class="sb" style="padding:0;"><table class="ct"><thead><tr><th>Quote</th><th>Term</th><th class="tr">Net ARR</th><th class="tr">TCV</th><th class="tr">Discount</th><th class="tr">Margin</th></tr></thead><tbody>${d.quotes.map(q=>{const qt=cq(q);return`<tr><td style="font-weight:500;">${q.label}</td><td>${q.term} mo</td><td class="mono tr">${f(qt.n)}</td><td class="mono tr cb">${f(qt.tcv)}</td><td class="tr ${dc(qt.disc)}">${fp(qt.disc)}</td><td class="mono tr ${mc(qt.mg)}">${fp(qt.mg)}</td></tr>`;}).join('')}</tbody></table></div></div>`;
+}
+
+// ── EXEC SUMMARY ───────────────────────────────────────
+function rExec(d,an){
+  const sr=(l,v)=>`<div class="srow"><span class="sl">${l}</span><span class="sv">${v}</span></div>`;
+  return`<div class="sec exsec"><div class="sh exhdr"><div><div class="st cb">Executive Summary</div><div class="ss">Auto-generated · for approver review · ${d.code}</div></div><span class="badge badge-${d.status.toLowerCase().replace(/ /g,'-')}">${d.status}</span></div>
+  <div class="sb"><div class="sgrid">
+    <div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Deal Overview</div>${sr('Customer',d.customer||'—')}${sr('Account',d.account||'—')}${sr('Deal Code',`<span class="mono cb">${d.code}</span>`)}${sr('Type',d.type)}${sr('Region',d.region||'—')}${sr('Segment',d.segment||'—')}${sr('Owner',d.owner||'—')}${sr('Quotes',d.quotes.length)}</div>
+    <div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Financial Summary</div>${sr('List Value',`<span class="mono">${f(an.tl)}</span>`)}${sr('Total Discount',`<span class="mono ${dc(an.disc)}">${f(an.tl-an.tn)} (${fp(an.disc)})</span>`)}${sr('Net ARR',`<span class="mono" style="font-weight:600;">${f(an.tn)}</span>`)}${sr('Total TCV',`<span class="mono cb" style="font-weight:600;">${f(an.tcv)}</span>`)}${sr('Gross Profit',`<span class="mono">${f(an.gp)}</span>`)}${sr('Gross Margin',`<span class="mono ${mc(an.mg)}">${fp(an.mg)}</span>`)}${sr('Required Approval',`<span style="color:${an.tc};font-weight:600;">${an.pa}</span>`)}</div>
+  </div>
+  ${d.exceptions.length>0?`<div class="divider"></div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Exceptions (${d.exceptions.length})</div><div class="epills">${d.exceptions.map(e=>`<span class="pill pe" style="cursor:default;">${e}</span>`).join('')}</div>`:''}
+  ${d.analysis?`<div class="divider"></div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Deal Management Commentary</div><div style="font-size:13px;line-height:1.7;">${d.analysis}</div>`:''}
+  </div></div>`;
+}
+
+// ── ALL DEALS ──────────────────────────────────────────
+function vSub(){
+  const pl=deals.reduce((s,d)=>s+cd(d).tcv,0),am=deals.length?deals.reduce((s,d)=>s+cd(d).mg,0)/deals.length:0,ad=deals.length?deals.reduce((s,d)=>s+cd(d).disc,0)/deals.length:0;
+  return`<div class="topbar"><div><h1>All Deal Submissions</h1><p>${deals.length} deal${deals.length!==1?'s':''} on record</p></div><button class="btn btn-primary" onclick="V('new')">+ New Deal</button></div>
+  <div class="content">
+  ${deals.length>0?`<div class="mrow" style="margin-bottom:16px;"><div class="mc"><div class="ml">Pipeline TCV</div><div class="mv cb">${f(pl)}</div></div><div class="mc"><div class="ml">Avg Gross Margin</div><div class="mv ${mc(am)}">${fp(am)}</div></div><div class="mc"><div class="ml">Avg Blended Discount</div><div class="mv ${dc(ad)}">${fp(ad)}</div></div><div class="mc"><div class="ml">Total Deals</div><div class="mv">${deals.length}</div></div></div>`:''}
+  <div class="sec"><div class="sh"><div class="st">Submitted Deals</div></div>${deals.length===0?'<div class="empty">No deals submitted yet.</div>':deals.map(d=>{const an=cd(d);return`<div class="dlr" onclick="openD('${d.code}')"><div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--accent);min-width:110px;">${d.code}</div><div style="flex:1;"><div style="font-size:13px;font-weight:500;">${d.customer||'Unnamed'}</div><div style="font-size:11px;color:var(--muted);">${d.type} · ${d.region||'—'} · ${d.segment||'—'} · ${d.owner||'—'}</div></div><div style="text-align:right;"><div style="font-family:'DM Mono',monospace;font-size:13px;font-weight:600;color:var(--accent);">${f(an.tcv)}</div><div style="font-size:11px;color:var(--muted);">${fp(an.mg)} margin</div></div><span class="badge badge-${d.status.toLowerCase().replace(/ /g,'-')}">${d.status}</span><div style="font-size:11px;color:var(--muted);">${ft(d.created)}</div></div>`;}).join('')}
+  </div></div>`;
+}
+
+// ── PRODUCT CATALOG ────────────────────────────────────
+function vCat(){
+  return`<div class="topbar"><div><h1>Product Catalog</h1><p>Live from Google Sheets · ${PRODUCT_TAB} tab ${prodsLoaded&&!prodsError?`· <span style="color:var(--green)">${PRODS.length} products loaded</span>`:''}</p></div>
+  <button class="btn btn-sm" onclick="loadProducts()">↻ Refresh</button></div>
+  <div class="content">
+  ${!prodsLoaded?`<div class="sec"><div class="sb"><div class="prod-loading"><span class="spinner"></span>&nbsp; Loading from Google Sheets...</div></div></div>`:
+    prodsError?`<div class="sec"><div class="sb"><div class="prod-error">⚠ ${prodsError}</div><button class="btn btn-sm" onclick="loadProducts()">Retry</button></div></div>`:
+    `<div class="sec"><div class="sh"><div class="st">Products, SKUs &amp; Pricing</div><div class="ss">Read directly from your Google Sheet · update the Sheet to change products</div></div>
+    <div class="sb" style="padding:0;"><table class="ct"><thead><tr><th>SKU</th><th>Product</th><th>Category</th><th class="tr">List Price</th><th class="tr">Cost/Unit</th><th class="tr">Std Discount</th><th class="tr">Std Margin</th><th>Unit</th></tr></thead><tbody>
+    ${PRODS.map(p=>{const sn=p.lp*(1-p.sd/100),mg=sn>0?((sn-p.cost)/sn*100):0;return`<tr><td class="mono" style="font-size:11px;color:var(--muted);">${p.sku}</td><td style="font-weight:500;">${p.name}</td><td>${p.cat?`<span class="tag">${p.cat}</span>`:''}</td><td class="mono tr">${f(p.lp)}</td><td class="mono tr" style="color:var(--muted);">${f(p.cost)}</td><td class="tr ca">${p.sd}%</td><td class="mono tr ${mc(mg)}">${mg.toFixed(1)}%</td><td style="font-size:11px;color:var(--muted);">${p.unit}</td></tr>`;}).join('')}
+    </tbody></table></div></div>`}
+  </div>`;
+}
+
+// ── NON-STANDARD TERMS ─────────────────────────────────
+function vTrm(){
+  return`<div class="topbar"><div><h1>Non-Standard Terms</h1><p>Approved exception list</p></div></div>
+  <div class="content"><div class="sec"><div class="sh"><div class="st">Approved Exception List</div></div><div class="sb">
+  ${TERMS.map((t,i)=>`<div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);"><span class="mono" style="font-size:11px;color:var(--dim);min-width:22px;">${String(i+1).padStart(2,'0')}</span><span class="pill pe" style="cursor:default;">${t}</span><span style="font-size:11px;color:var(--muted);margin-left:auto;">Director+ approval</span></div>`).join('')}
+  </div></div></div>`;
+}
+
+// ── APPROVAL TIERS ─────────────────────────────────────
+function vTir(){
+  const tiers=[{name:'Deal Desk Manager',col:'var(--green)',bc:'rgba(52,201,125,0.2)',disc:'≤ 15%',tcv:'≤ £250k',exc:'None'},{name:'Director',col:'var(--amber)',bc:'rgba(245,166,35,0.2)',disc:'16–30%',tcv:'£250k–£750k',exc:'1–2'},{name:'Finance Sign-off',col:'var(--red)',bc:'rgba(240,96,84,0.2)',disc:'> 30%',tcv:'> £750k',exc:'3+'}];
+  return`<div class="topbar"><div><h1>Approval Tiers</h1><p>Deal routing is automatic based on deal metrics</p></div></div>
+  <div class="content"><div class="mrow" style="grid-template-columns:repeat(3,1fr);margin-bottom:20px;">${tiers.map((t,i)=>`<div class="mc" style="border-color:${t.bc};"><div class="ml">Tier ${i+1}</div><div style="font-size:15px;font-weight:600;margin:10px 0;color:${t.col};">${t.name}</div><div class="ms">Discount: <strong>${t.disc}</strong></div><div class="ms">TCV: <strong>${t.tcv}</strong></div><div class="ms">Exceptions: <strong>${t.exc}</strong></div></div>`).join('')}</div>
+  <div class="sec"><div class="sh"><div class="st">Escalation Rules</div></div><div class="sb" style="font-size:13px;line-height:2;color:var(--muted);">
+    <div>All deals → <span style="color:var(--text);">Deal Desk Manager</span> review on submission.</div>
+    <div>Director required if: discount &gt; 15% <em>or</em> TCV &gt; £250k <em>or</em> any exception flagged.</div>
+    <div>Finance sign-off if: discount &gt; 30% <em>or</em> TCV &gt; £750k <em>or</em> 3+ exceptions.</div>
+  </div></div></div>`;
+}
+
+// ── SETTINGS ───────────────────────────────────────────
+function vSet(){
+  const cn=!!token;
+  return`<div class="topbar"><div><h1>Settings</h1><p>Google Sheets integration</p></div></div>
+  <div class="content">
+  <div class="sec"><div class="sh"><div><div class="st">Google Account</div></div>${cn?`<span class="sstat on"><span class="sdot"></span>Sheets authorised</span>`:`<span class="sstat off"><span class="sdot"></span>Not authorised</span>`}</div><div class="sb">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+      <div class="u-av" style="width:40px;height:40px;font-size:15px;">${user?.pic?`<img src="${user.pic}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />`:(user?.init||'?')}</div>
+      <div><div style="font-size:14px;font-weight:500;">${user?.name||'—'}</div><div style="font-size:12px;color:var(--muted);">${user?.email||'—'}</div></div>
+    </div>
+    ${cn
+      ?`<div style="font-size:13px;color:var(--green);margin-bottom:8px;">✓ Authorised to read/write Google Sheets</div>
+         <div style="font-size:12px;color:var(--muted);">Products load automatically from your Product Catalogue Sheet.</div>
+         <button class="btn btn-sm" style="margin-top:10px;" onclick="loadProducts()">↻ Reload Products</button>`
+      :`<div style="font-size:13px;color:var(--muted);margin-bottom:12px;">Click below to authorise. Google will ask once for permission to read/write your Sheets.</div>
+        <button class="btn btn-primary" onclick="authSheets()">Authorise Google Sheets Access</button>`
+    }
+  </div></div>
+
+  <div class="sec"><div class="sh"><div class="st">Product Catalogue Sheet</div><div class="ss">Read-only · hardcoded in tool</div></div><div class="sb">
+    <div style="font-size:13px;color:var(--muted);margin-bottom:8px;">Products are loaded from:</div>
+    <div class="mono" style="font-size:12px;color:var(--accent);background:var(--surface2);padding:10px 12px;border-radius:6px;border:1px solid var(--border2);">Sheet ID: ${PRODUCT_SHEET_ID}<br/>Tab: ${PRODUCT_TAB}</div>
+    <div style="font-size:11px;color:var(--dim);margin-top:8px;">To update products, edit the Google Sheet directly. Click "Reload Products" above to refresh.</div>
+  </div></div>
+
+  <div class="sec"><div class="sh"><div class="st">Deal Submissions Sheet</div><div class="ss">Where submitted deals are saved</div></div><div class="sb">
+    <div class="fg" style="max-width:580px;">
+      <div class="fld ff"><label>Google Sheet ID *</label><input type="text" id="sid" value="${SUBMISSIONS_SHEET_ID}" placeholder="Paste the Sheet ID where deal submissions should be saved" oninput="SUBMISSIONS_SHEET_ID=this.value" /><div class="fhint">From URL: docs.google.com/spreadsheets/d/<strong>[SHEET-ID]</strong>/edit · Can be the same Sheet as your Product Catalogue or a separate one</div></div>
+      <div class="fld"><label>Tab Name</label><input type="text" value="${SUBMISSIONS_TAB}" oninput="SUBMISSIONS_TAB=this.value" /></div>
+      <div class="fld" style="justify-content:flex-end;"><label>&nbsp;</label><button class="btn btn-primary" onclick="testS()">Test Connection</button></div>
+    </div>
+    <div id="sr" style="margin-top:12px;font-size:12px;"></div>
+  </div></div>
+
+  <div class="sec"><div class="sh"><div class="st">Submissions Column Schema</div><div class="ss">Written on each deal submission</div></div><div class="sb" style="padding:0;"><table class="ct"><thead><tr><th>Col</th><th>Field</th><th>Example</th></tr></thead><tbody>
+    ${[['A','Timestamp','29 Mar 2026 14:30'],['B','Deal Code','DD-2603-48271'],['C','Customer','Acme Corp'],['D','Account ID','0012X000ABC'],['E','Deal Owner','Sarah Smith'],['F','Type','New Business'],['G','Segment','Enterprise'],['H','Region','EMEA'],['I','Quotes','2'],['J','Net ARR (£)','180000'],['K','Total TCV (£)','360000'],['L','List Value (£)','240000'],['M','Blended Discount %','25.0'],['N','Gross Margin %','58.3'],['O','Gross Profit (£)','104940'],['P','Exceptions','MFN clause; Extended payment'],['Q','Required Approval','Director'],['R','Analysis','Commentary...'],['S','Status','Pending Approval']].map(([c,fi,e])=>`<tr><td class="mono" style="color:var(--accent);font-weight:500;">${c}</td><td style="font-weight:500;">${fi}</td><td style="color:var(--muted);font-size:12px;">${e}</td></tr>`).join('')}
+  </tbody></table></div></div>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════════════════
+// ACTIONS
+// ═══════════════════════════════════════════════════════
+function u(k,v){deal[k]=v;R();}
+function uQ(qi,k,v){deal.quotes[qi][k]=v;R();}
+function uL(qi,li,k,v){deal.quotes[qi].lines[li][k]=v;R();}
+function swQ(i){deal.aq=i;R();}
+function addQ(){deal.quotes.push(nq(deal.quotes.length+1));deal.aq=deal.quotes.length-1;R();}
+function rmQ(i){if(deal.quotes.length<=1)return;deal.quotes.splice(i,1);deal.aq=Math.max(0,i-1);R();}
+function addL(qi){deal.quotes[qi].lines.push(nl());R();}
+function rmL(qi,li){if(deal.quotes[qi].lines.length<=1)return;deal.quotes[qi].lines.splice(li,1);R();}
+function addE(v){if(v&&!deal.exceptions.includes(v)){deal.exceptions.push(v);R();}}
+function rmE(v){deal.exceptions=deal.exceptions.filter(e=>e!==v);R();}
+function resetDeal(){if(confirm('Reset the current deal form?')){deal=nd();R();}}
+function openD(code){const d=deals.find(x=>x.code===code);if(d){deal=JSON.parse(JSON.stringify(d));V('new');}}
+
+// ── SUBMIT ─────────────────────────────────────────────
+async function submitDeal(){
+  const d=deal,an=cd(d);
+  if(!d.customer.trim()){toast('Please enter a customer name.','error');return;}
+  if(!d.owner.trim()){toast('Please enter a deal owner.','error');return;}
+  if(an.tn===0){toast('Please add at least one product line.','error');return;}
+  d.status='Pending Approval';
+  d.submitted=new Date().toISOString();
+  d.log=[{stage:'submitted',ts:new Date().toISOString(),by:d.owner}];
+  const copy=JSON.parse(JSON.stringify(d));
+  deals.push(copy);
+  if(token&&SUBMISSIONS_SHEET_ID){await writeS(copy,an);}
+  else{toast(`Deal ${d.code} submitted. ${!token?'Authorise Sheets in Settings':'Add Submissions Sheet ID in Settings'} to enable auto-save.`);}
+  deal=nd();R();
+}
+
+async function writeS(d,an){
+  const row=[[new Date().toLocaleString('en-GB'),d.code,d.customer,d.account,d.owner,d.type,d.segment,d.region,d.quotes.length,Math.round(an.tn),Math.round(an.tcv),Math.round(an.tl),an.disc.toFixed(1),an.mg.toFixed(1),Math.round(an.gp),d.exceptions.join('; '),an.pa,d.analysis,d.status]];
+  try{
+    const res=await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SUBMISSIONS_SHEET_ID}/values/${encodeURIComponent(SUBMISSIONS_TAB+'!A:S')}:append?valueInputOption=RAW`,{method:'POST',headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify({values:row})});
+    if(res.ok){toast(`Deal ${d.code} saved to Google Sheets ✓`,'success');}
+    else{const e=await res.json();toast('Sheets error: '+(e.error?.message||'Unknown'),'error');}
+  }catch(e){toast('Could not reach Sheets: '+e.message,'error');}
+}
+
+async function testS(){
+  const r=document.getElementById('sr');
+  if(!SUBMISSIONS_SHEET_ID){r.innerHTML='<span style="color:var(--red)">Enter a Sheet ID first.</span>';return;}
+  if(!token){r.innerHTML='<span style="color:var(--amber)">Authorise Sheets access first.</span>';return;}
+  r.innerHTML='<span style="color:var(--muted)">Testing...</span>';
+  try{
+    const res=await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SUBMISSIONS_SHEET_ID}?fields=properties.title`,{headers:{'Authorization':'Bearer '+token}});
+    const data=await res.json();
+    if(res.ok){r.innerHTML=`<span style="color:var(--green)">✓ Connected to: <strong>${data.properties?.title}</strong></span>`;}
+    else{r.innerHTML=`<span style="color:var(--red)">Error: ${data.error?.message}</span>`;}
+  }catch(e){r.innerHTML=`<span style="color:var(--red)">Failed: ${e.message}</span>`;}
+}
+
+// ── AI ANALYSIS ────────────────────────────────────────
+async function genAI(){
+  const d=deal,an=cd(d);
+  if(!d.customer){toast('Enter customer name first.','error');return;}
+  const btn=document.getElementById('aib'),ld=document.getElementById('ail'),lf=document.getElementById('lf'),ta=document.getElementById('fat');
+  if(btn){btn.disabled=true;btn.innerHTML='<span class="spinner"></span> Generating...';}
+  if(ld)ld.style.display='block';
+  let p=0;const iv=setInterval(()=>{p=Math.min(p+7,85);if(lf)lf.style.width=p+'%';},200);
+  const prompt=`You are a Deal Desk analyst at a cybersecurity SaaS company. Write an executive-level deal analysis (3-4 short paragraphs, under 200 words) for an approver. Direct, commercial, data-driven. Flowing prose — no bullet points.
+
+Deal: ${d.customer} | ${d.type} | ${d.segment||'n/a'} | ${d.region||'n/a'} | Owner: ${d.owner}
+Quotes: ${d.quotes.length} | Terms: ${d.quotes.map(q=>q.term+'mo').join(', ')}
+Net ARR: £${Math.round(an.tn).toLocaleString('en-GB')} | TCV: £${Math.round(an.tcv).toLocaleString('en-GB')} | List: £${Math.round(an.tl).toLocaleString('en-GB')}
+Blended Discount: ${an.disc.toFixed(1)}% (standard: ${an.sda.toFixed(1)}%) | Gross Margin: ${an.mg.toFixed(1)}%
+Exceptions: ${d.exceptions.length>0?d.exceptions.join('; '):'None'} | Required Approval: ${an.pa}
+
+Cover: commercial overview, discount/margin rationale, exceptions (if any), strategic fit, clear recommendation.`;
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})});
+    const data=await res.json();clearInterval(iv);if(lf)lf.style.width='100%';
+    const txt=data.content?.find(c=>c.type==='text')?.text||'';
+    if(txt){deal.analysis=txt;if(ta)ta.value=txt;}
+  }catch(e){clearInterval(iv);toast('Could not generate: '+e.message,'error');}
+  setTimeout(()=>{if(ld)ld.style.display='none';if(lf)lf.style.width='0';if(btn){btn.disabled=false;btn.innerHTML='Generate Draft ↗';}R();},500);
+}
+
+// ── TOAST ──────────────────────────────────────────────
+function toast(msg,type='info'){const el=document.getElementById('toast');el.textContent=msg;el.className='toast show '+(type||'');setTimeout(()=>el.classList.remove('show'),4500);}
+</script>
+</body>
+</html>

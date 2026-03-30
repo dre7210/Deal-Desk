@@ -10,7 +10,6 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'DM Sans',sans-serif;background:#0D0F14;color:#E8EAF0;min-height:100vh;}
 :root{--bg:#0D0F14;--surface:#161921;--surface2:#1E2230;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);--accent:#4F8EF7;--green:#34C97D;--amber:#F5A623;--red:#F06054;--text:#E8EAF0;--muted:#7A7F96;--dim:#2E3347;}
-
 .signin-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0D0F14;}
 .signin-card{background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:48px 40px;width:420px;text-align:center;}
 .signin-eyebrow{font-size:10px;font-weight:500;color:var(--muted);letter-spacing:1.8px;text-transform:uppercase;margin-bottom:8px;}
@@ -20,7 +19,6 @@ body{font-family:'DM Sans',sans-serif;background:#0D0F14;color:#E8EAF0;min-heigh
 .signin-divider{height:1px;background:var(--border);margin:24px 0;}
 .signin-note{font-size:11px;color:var(--dim);line-height:1.6;}
 #g_id_signin{display:flex;justify-content:center;}
-
 .app{display:grid;grid-template-columns:230px 1fr;min-height:100vh;}
 .sidebar{background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto;}
 .logo{padding:22px 20px 20px;border-bottom:1px solid var(--border);}
@@ -40,12 +38,10 @@ body{font-family:'DM Sans',sans-serif;background:#0D0F14;color:#E8EAF0;min-heigh
 .u-em{font-size:10px;color:var(--muted);}
 .so-btn{margin-left:auto;font-size:11px;color:var(--muted);cursor:pointer;padding:3px 7px;border-radius:4px;border:1px solid transparent;background:transparent;font-family:inherit;}
 .so-btn:hover{color:var(--red);border-color:rgba(240,96,84,0.3);}
-
 .main{overflow-y:auto;min-height:100vh;}
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;border-bottom:1px solid var(--border);background:rgba(22,25,33,0.97);position:sticky;top:0;z-index:20;}
 .topbar h1{font-size:15px;font-weight:600;}
 .topbar p{font-size:12px;color:var(--muted);margin-top:2px;}
-
 .btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:7px;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.12s;border:1px solid var(--border2);background:transparent;color:var(--text);font-family:'DM Sans',sans-serif;white-space:nowrap;}
 .btn:hover{background:rgba(255,255,255,0.05);}
 .btn:active{transform:scale(0.98);}
@@ -59,27 +55,23 @@ body{font-family:'DM Sans',sans-serif;background:#0D0F14;color:#E8EAF0;min-heigh
 .btn-danger:hover{background:rgba(240,96,84,0.08);}
 .btn-success{background:var(--green);border-color:var(--green);color:#fff;}
 .btn-success:hover{background:#45D98A;}
-
 .content{padding:24px 32px 48px;}
 .deal-header{display:flex;gap:16px;margin-bottom:20px;align-items:stretch;}
 .code-card{background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:14px 18px;min-width:170px;display:flex;flex-direction:column;justify-content:center;}
 .code-lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px;}
 .code-val{font-family:'DM Mono',monospace;font-size:17px;font-weight:500;color:var(--accent);margin-top:5px;}
 .code-dt{font-size:10px;color:var(--dim);margin-top:5px;font-family:'DM Mono',monospace;}
-
 .mrow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;flex:1;}
 .mc{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;}
 .ml{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.9px;}
 .mv{font-size:21px;font-weight:600;margin-top:6px;font-family:'DM Mono',monospace;}
 .ms{font-size:11px;color:var(--muted);margin-top:4px;}
 .cg{color:var(--green);}.ca{color:var(--amber);}.cr{color:var(--red);}.cb{color:var(--accent);}.cm{color:var(--muted);}
-
 .sec{background:var(--surface);border:1px solid var(--border);border-radius:10px;margin-bottom:16px;overflow:hidden;}
 .sh{display:flex;align-items:center;justify-content:space-between;padding:13px 20px;border-bottom:1px solid var(--border);}
 .st{font-size:13px;font-weight:600;}
 .ss{font-size:11px;color:var(--muted);margin-top:2px;}
 .sb{padding:20px;}
-
 .atrack{display:flex;align-items:flex-start;position:relative;padding:8px 0;}
 .astep{flex:1;display:flex;flex-direction:column;align-items:center;position:relative;z-index:1;}
 .acirc{width:34px;height:34px;border-radius:50%;border:2px solid var(--dim);background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--muted);transition:all 0.2s;}
@@ -88,10 +80,8 @@ body{font-family:'DM Sans',sans-serif;background:#0D0F14;color:#E8EAF0;min-heigh
 .albl{text-align:center;font-size:10px;color:var(--muted);margin-top:8px;text-transform:uppercase;letter-spacing:0.7px;max-width:90px;line-height:1.4;}
 .ats{text-align:center;font-size:9px;color:var(--dim);margin-top:4px;font-family:'DM Mono',monospace;max-width:90px;line-height:1.4;}
 .albl.act{color:var(--accent);}
-
 .fg{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
 .fg3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
-.ff{grid-column:1/-1;}
 .fld{display:flex;flex-direction:column;gap:5px;}
 .fld label{font-size:10px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:1px;}
 .fld input,.fld select,.fld textarea{background:var(--surface2);border:1px solid var(--border2);border-radius:6px;padding:9px 12px;font-size:13px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.12s;width:100%;}
@@ -99,12 +89,10 @@ body{font-family:'DM Sans',sans-serif;background:#0D0F14;color:#E8EAF0;min-heigh
 .fld textarea{resize:vertical;min-height:90px;line-height:1.6;}
 .fld select option{background:#1E2230;}
 .fhint{font-size:10px;color:var(--dim);margin-top:3px;}
-
 .qtabs{display:flex;align-items:center;gap:6px;margin-bottom:18px;}
 .qtab{padding:6px 14px;font-size:12px;font-weight:500;border-radius:6px;cursor:pointer;color:var(--muted);transition:all 0.12s;border:1px solid transparent;background:transparent;font-family:'DM Sans',sans-serif;}
 .qtab:hover:not(.active){color:var(--text);background:rgba(255,255,255,0.04);}
 .qtab.active{background:var(--accent);color:#fff;border-color:var(--accent);}
-
 .lt{width:100%;border-collapse:collapse;font-size:12.5px;}
 .lt th{text-align:left;padding:7px 10px;color:var(--muted);font-weight:500;font-size:10px;text-transform:uppercase;letter-spacing:0.8px;border-bottom:1px solid var(--border);white-space:nowrap;}
 .lt td{padding:7px 10px;border-bottom:1px solid var(--border);vertical-align:middle;}
@@ -113,15 +101,14 @@ body{font-family:'DM Sans',sans-serif;background:#0D0F14;color:#E8EAF0;min-heigh
 .lt input,.lt select{background:var(--surface2);border:1px solid transparent;border-radius:5px;padding:5px 8px;font-size:12px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.12s;width:100%;}
 .lt input:focus,.lt select:focus{border-color:var(--accent);}
 .lt input.qty-input{width:110px;min-width:110px;}
+.lt td.calc{font-family:'DM Mono',monospace;font-size:12px;}
 .tr{text-align:right;}
 .mono{font-family:'DM Mono',monospace;}
-
 .epills{display:flex;flex-wrap:wrap;gap:6px;min-height:24px;}
 .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:500;}
 .pe{background:rgba(245,166,35,0.1);border:1px solid rgba(245,166,35,0.3);color:var(--amber);}
 .pr{cursor:pointer;opacity:0.55;font-size:14px;line-height:1;}
 .pr:hover{opacity:1;}
-
 .exsec{border-color:rgba(79,142,247,0.25);}
 .exhdr{background:rgba(79,142,247,0.05);}
 .sgrid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
@@ -129,30 +116,24 @@ body{font-family:'DM Sans',sans-serif;background:#0D0F14;color:#E8EAF0;min-heigh
 .srow:last-child{border-bottom:none;}
 .sl{color:var(--muted);}.sv{font-weight:500;text-align:right;}
 .divider{height:1px;background:var(--border);margin:16px 0;}
-
 .badge{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:500;}
 .badge-draft{background:rgba(122,127,150,0.12);color:var(--muted);border:1px solid rgba(122,127,150,0.25);}
 .badge-pending{background:rgba(79,142,247,0.1);color:var(--accent);border:1px solid rgba(79,142,247,0.25);}
 .badge-approved{background:rgba(52,201,125,0.1);color:var(--green);border:1px solid rgba(52,201,125,0.25);}
 .badge-escalated{background:rgba(245,166,35,0.1);color:var(--amber);border:1px solid rgba(245,166,35,0.25);}
-
 .dlr{display:flex;align-items:center;gap:16px;padding:13px 20px;border-bottom:1px solid var(--border);cursor:pointer;transition:background 0.1s;}
 .dlr:hover{background:rgba(255,255,255,0.02);}
 .dlr:last-child{border-bottom:none;}
-
 .ct{width:100%;border-collapse:collapse;font-size:12.5px;}
 .ct th{text-align:left;padding:8px 12px;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:0.8px;border-bottom:1px solid var(--border);font-weight:500;}
 .ct td{padding:10px 12px;border-bottom:1px solid var(--border);}
 .ct tr:last-child td{border-bottom:none;}
-
 .tag{display:inline-block;padding:1px 7px;border-radius:4px;font-size:10px;font-weight:500;background:rgba(79,142,247,0.1);color:var(--accent);border:1px solid rgba(79,142,247,0.2);}
 .aib{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:500;background:rgba(123,92,240,0.12);border:1px solid rgba(123,92,240,0.25);color:#9B7FFF;}
 .sheets-badge{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:500;background:rgba(52,201,125,0.1);border:1px solid rgba(52,201,125,0.25);color:var(--green);}
-
 .empty{text-align:center;padding:40px 20px;color:var(--muted);font-size:13px;}
 .prod-loading{text-align:center;padding:30px;color:var(--muted);font-size:13px;}
 .prod-error{background:rgba(240,96,84,0.08);border:1px solid rgba(240,96,84,0.2);border-radius:7px;padding:12px 16px;font-size:12px;color:var(--red);margin-bottom:12px;}
-
 .toast{position:fixed;bottom:24px;right:24px;background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:12px 18px;font-size:13px;z-index:9999;display:none;max-width:360px;line-height:1.5;}
 .toast.show{display:block;}
 .toast.success{border-color:rgba(52,201,125,0.4);}
@@ -164,6 +145,11 @@ body{font-family:'DM Sans',sans-serif;background:#0D0F14;color:#E8EAF0;min-heigh
 .sstat.on{background:rgba(52,201,125,0.1);color:var(--green);border:1px solid rgba(52,201,125,0.25);}
 .sstat.off{background:rgba(122,127,150,0.1);color:var(--muted);border:1px solid rgba(122,127,150,0.2);}
 .sdot{width:6px;height:6px;border-radius:50%;background:currentColor;}
+/* quote breakdown table in exec summary */
+.qt-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px;}
+.qt-table th{text-align:left;padding:5px 8px;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:0.7px;border-bottom:1px solid var(--border);}
+.qt-table td{padding:6px 8px;border-bottom:1px solid var(--border);}
+.qt-table tr:last-child td{border-bottom:none;}
 @keyframes spin{to{transform:rotate(360deg);}}
 </style>
 </head>
@@ -206,71 +192,49 @@ body{font-family:'DM Sans',sans-serif;background:#0D0F14;color:#E8EAF0;min-heigh
 <div class="toast" id="toast"></div>
 
 <script>
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 // CONFIG
-// ═══════════════════════════════════════════════════════
-const CID        = '73494184846-arhdc818umkgqcsrhuv1k8c0i14viavm.apps.googleusercontent.com';
-const SCOPE      = 'https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/gmail.send';
-const SHEET_ID   = '1tv_WzllV5yepZ0zsPq-cYC1ZfhsNQPsdQCd-5INeV5U';
-const TAB_PRODS  = 'Product Catalogue';
-const TAB_TERMS  = 'Non-Standard Terms';
-const TAB_TIERS  = 'Approval Tiers';
-const TAB_DEALS  = 'Deals Processed';
+// ═══════════════════════════════════════════════
+const CID      = '73494184846-arhdc818umkgqcsrhuv1k8c0i14viavm.apps.googleusercontent.com';
+const SCOPE    = 'https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/gmail.send';
+const SHEET_ID = '1tv_WzllV5yepZ0zsPq-cYC1ZfhsNQPsdQCd-5INeV5U';
+const TAB_PRODS= 'Product Catalogue';
+const TAB_TERMS= 'Non-Standard Terms';
+const TAB_TIERS= 'Approval Tiers';
+const TAB_DEALS= 'Deals Processed';
 
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 // STATE
-// ═══════════════════════════════════════════════════════
-let token      = null;
-let tokenClient= null;
-let user       = null;
-let PRODS      = [];
-let TERMS      = [];
-let TIERS      = [];
-let deals      = [];
-let view       = 'new';
-let deal       = null;
-let dataLoaded = false;
+// ═══════════════════════════════════════════════
+let token=null, tokenClient=null, user=null;
+let PRODS=[], TERMS=[], TIERS=[];
+let deals=[], view='new', deal=null, dataLoaded=false;
 
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 // DEAL FACTORIES
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 function nd(){return{code:gc(),customer:'',account:'',owner:user?.name||'',segment:'',region:'',type:'New Business',quotes:[nq(1)],aq:0,exceptions:[],analysis:'',status:'Draft',log:[],created:new Date().toISOString(),submitted:null};}
 function nq(n){return{label:'Quote '+n,term:12,currency:'GBP',lines:[nl()]};}
 function nl(){return{sku:'',qty:1,np:''};}
 function gc(){const y=new Date().getFullYear().toString().slice(2),m=String(new Date().getMonth()+1).padStart(2,'0');return`DD-${y}${m}-${Math.floor(Math.random()*90000)+10000}`;}
 
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 // AUTH
-// ═══════════════════════════════════════════════════════
-window.onload = function(){
-  google.accounts.id.initialize({
-    client_id: CID,
-    callback: cred => {
-      const p = jwtParse(cred.credential);
-      user = {name:p.name,email:p.email,pic:p.picture,init:p.name.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2)};
-      sessionStorage.setItem('ddu',JSON.stringify(user));
-      bootApp();
-    },
-    auto_select:false,
-  });
+// ═══════════════════════════════════════════════
+window.onload=function(){
+  google.accounts.id.initialize({client_id:CID,callback:cred=>{
+    const p=jwtP(cred.credential);
+    user={name:p.name,email:p.email,pic:p.picture,init:p.name.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2)};
+    sessionStorage.setItem('ddu',JSON.stringify(user));bootApp();
+  },auto_select:false});
   google.accounts.id.renderButton(document.getElementById('g_id_signin'),{theme:'filled_blue',size:'large',shape:'rectangular',text:'signin_with',width:280});
-  tokenClient = google.accounts.oauth2.initTokenClient({
-    client_id:CID,scope:SCOPE,
-    callback: async r => {
-      if(r.error){showToast('Sheets auth failed: '+r.error,'error');return;}
-      token = r.access_token;
-      await loadAllData();
-    },
-  });
-  const saved = sessionStorage.getItem('ddu');
-  if(saved){user=JSON.parse(saved);bootApp();}
+  tokenClient=google.accounts.oauth2.initTokenClient({client_id:CID,scope:SCOPE,callback:async r=>{
+    if(r.error){showToast('Auth failed: '+r.error,'error');return;}
+    token=r.access_token;await loadAllData();
+  }});
+  const s=sessionStorage.getItem('ddu');if(s){user=JSON.parse(s);bootApp();}
 };
-
-function jwtParse(t){
-  const b=t.split('.')[1].replace(/-/g,'+').replace(/_/g,'/');
-  return JSON.parse(decodeURIComponent(atob(b).split('').map(c=>'%'+('00'+c.charCodeAt(0).toString(16)).slice(-2)).join('')));
-}
-
+function jwtP(t){const b=t.split('.')[1].replace(/-/g,'+').replace(/_/g,'/');return JSON.parse(decodeURIComponent(atob(b).split('').map(c=>'%'+('00'+c.charCodeAt(0).toString(16)).slice(-2)).join('')));}
 function bootApp(){
   document.getElementById('signin-screen').style.display='none';
   document.getElementById('app').style.display='grid';
@@ -283,97 +247,68 @@ function bootApp(){
   tokenClient.requestAccessToken({prompt:''});
   renderView();
 }
-
 function signOut(){
-  google.accounts.id.disableAutoSelect();
-  sessionStorage.removeItem('ddu');
+  google.accounts.id.disableAutoSelect();sessionStorage.removeItem('ddu');
   token=null;user=null;deal=null;deals=[];PRODS=[];TERMS=[];TIERS=[];dataLoaded=false;
   document.getElementById('signin-screen').style.display='flex';
   document.getElementById('app').style.display='none';
 }
+function authSheets(){if(!token)tokenClient.requestAccessToken({prompt:'consent'});else{showToast('Already connected ✓','success');loadAllData();}}
 
-function authSheets(){
-  if(!token)tokenClient.requestAccessToken({prompt:'consent'});
-  else{showToast('Already connected ✓','success');loadAllData();}
-}
-
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 // DATA LOADERS
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 async function sheetRead(tab,range){
   const enc=encodeURIComponent(`${tab}!${range}`);
   const res=await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${enc}`,{headers:{'Authorization':'Bearer '+token}});
-  const d=await res.json();
-  if(!res.ok)throw new Error(d.error?.message||'Sheet read failed');
-  return d.values||[];
+  const d=await res.json();if(!res.ok)throw new Error(d.error?.message||'Sheet read failed');return d.values||[];
 }
+function num(v){return parseFloat((v||'0').toString().replace(/[^0-9.]/g,''))||0;}
 
 async function loadAllData(){
   if(!token)return;
   try{
-    const [pRows,tRows,tiRows] = await Promise.all([
-      sheetRead(TAB_PRODS,'A2:H500'),
-      sheetRead(TAB_TERMS,'A2:B500'),
-      sheetRead(TAB_TIERS,'A2:F500'),
-    ]);
-
-    PRODS = pRows.filter(r=>r[0]&&r[1]).map(r=>({
-      sku:(r[0]||'').trim(), name:(r[1]||'').trim(), cat:(r[2]||'').trim(),
-      lp:num(r[3]), cost:num(r[4]), sd:num(r[5]), unit:(r[7]||'').trim(),
-    }));
-
-    TERMS = tRows.filter(r=>r[1]).map(r=>(r[1]||'').trim());
-
-    TIERS = tiRows.filter(r=>r[0]&&r[1]).map(r=>({
-      tier:(r[0]||'').trim(), role:(r[1]||'').trim(), email:(r[2]||'').trim(),
-      maxDisc:num(r[3]), maxARR:num(r[4]),
-    }));
-
-    dataLoaded = true;
+    const[pR,tR,tiR]=await Promise.all([sheetRead(TAB_PRODS,'A2:H500'),sheetRead(TAB_TERMS,'A2:B500'),sheetRead(TAB_TIERS,'A2:F500')]);
+    PRODS=pR.filter(r=>r[0]&&r[1]).map(r=>({sku:(r[0]||'').trim(),name:(r[1]||'').trim(),cat:(r[2]||'').trim(),lp:num(r[3]),cost:num(r[4]),sd:num(r[5]),unit:(r[7]||'').trim()}));
+    TERMS=tR.filter(r=>r[1]).map(r=>(r[1]||'').trim());
+    TIERS=tiR.filter(r=>r[0]&&r[1]).map(r=>({tier:(r[0]||'').trim(),role:(r[1]||'').trim(),email:(r[2]||'').trim(),maxDisc:num(r[3]),maxARR:num(r[4])}));
+    dataLoaded=true;
     showToast(`Loaded ${PRODS.length} products · ${TERMS.length} terms · ${TIERS.length} tiers`,'success');
     renderView();
-  }catch(e){
-    showToast('Error loading data: '+e.message,'error');
-  }
+  }catch(e){showToast('Error loading data: '+e.message,'error');}
 }
 
-function num(v){return parseFloat((v||'0').toString().replace(/[^0-9.]/g,''))||0;}
-
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 // TIER LOGIC
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 function getPeakApprover(disc,arr,exc){
   if(!TIERS.length)return{role:'Deal Desk Manager',email:'',color:'var(--green)',tier:'1'};
   let idx=0;
   for(let i=1;i<TIERS.length;i++){
     const prev=TIERS[i-1];
-    if(disc>prev.maxDisc||arr>prev.maxARR||(exc>0&&i>=1)||(exc>2&&i>=2)){idx=i;}
+    if(disc>prev.maxDisc||arr>prev.maxARR||(exc>0&&i>=1)||(exc>2&&i>=2))idx=i;
   }
-  const t=TIERS[idx];
   const colors=['var(--green)','var(--amber)','var(--red)'];
-  return{...t,color:colors[idx]||'var(--red)'};
+  return{...TIERS[idx],color:colors[idx]||'var(--red)'};
 }
 
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 // FINANCE ENGINE
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 function calcLine(l){
   const p=PRODS.find(x=>x.sku===l.sku);
   if(!p)return{lt:0,nt:0,cost:0,gp:0,mg:0,disc:0,over:false,p:null};
   const lt=p.lp*l.qty;
-  const un=(l.np!==''&&l.np!==null&&!isNaN(l.np))?parseFloat(l.np):p.lp*(1-p.sd/100);
+  const un=(l.np!==''&&l.np!==null&&!isNaN(l.np)&&l.np!==0)?parseFloat(l.np):p.lp*(1-p.sd/100);
   const nt=un*l.qty,cost=p.cost*l.qty,gp=nt-cost;
   const mg=nt>0?gp/nt*100:0,disc=lt>0?(1-nt/lt)*100:0,over=disc>p.sd+0.1;
   return{lt,nt,cost,gp,mg,disc,over,p};
 }
-
 function calcQuote(q){
-  let l=0,n=0,c=0;
-  q.lines.forEach(x=>{const r=calcLine(x);l+=r.lt;n+=r.nt;c+=r.cost;});
+  let l=0,n=0,c=0;q.lines.forEach(x=>{const r=calcLine(x);l+=r.lt;n+=r.nt;c+=r.cost;});
   const gp=n-c,mg=n>0?gp/n*100:0,disc=l>0?(1-n/l)*100:0,tcv=n*q.term/12;
   return{l,n,c,gp,mg,disc,tcv};
 }
-
 function calcDeal(d){
   let tl=0,tn=0,tc=0,tt=0,sw=0,sn=0;
   d.quotes.forEach(q=>{
@@ -385,61 +320,50 @@ function calcDeal(d){
   return{tl,tn,tc,gp,mg,disc,sda,tcv:tt,exc,pa};
 }
 
-// ═══════════════════════════════════════════════════════
-// FORMAT HELPERS
-// ═══════════════════════════════════════════════════════
-const fmt  = (n,c='GBP')=>{if(isNaN(n)||n===null)return'—';const s=c==='USD'?'$':c==='EUR'?'€':'£';return s+Math.round(n).toLocaleString('en-GB');};
-const fmtP = n=>isNaN(n)?'—':n.toFixed(1)+'%';
-const fmtT = iso=>{if(!iso)return'';const d=new Date(iso);return d.toLocaleDateString('en-GB',{day:'numeric',month:'short'})+' '+d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});};
-const mCls = m=>m<40?'cr':m<55?'ca':'cg';
-const dCls = d=>d>30?'cr':d>15?'ca':'cg';
-const esc  = s=>(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+// ═══════════════════════════════════════════════
+// FORMAT
+// ═══════════════════════════════════════════════
+const fmt =(n,c='GBP')=>{if(isNaN(n)||n===null)return'—';const s=c==='USD'?'$':c==='EUR'?'€':'£';return s+Math.round(n).toLocaleString('en-GB');};
+const fmtP=n=>isNaN(n)?'—':n.toFixed(1)+'%';
+const fmtT=iso=>{if(!iso)return'';const d=new Date(iso);return d.toLocaleDateString('en-GB',{day:'numeric',month:'short'})+' '+d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});};
+const mCls=m=>m<40?'cr':m<55?'ca':'cg';
+const dCls=d=>d>30?'cr':d>15?'ca':'cg';
+const esc =s=>(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 
-// ═══════════════════════════════════════════════════════
-// FIELD STATE — no re-render on typing
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
+// FIELD STATE — type without re-render
+// ═══════════════════════════════════════════════
 function saveFields(){
-  const fc=document.getElementById('f-customer');if(fc)deal.customer=fc.value;
-  const fa=document.getElementById('f-account');if(fa)deal.account=fa.value;
-  const fo=document.getElementById('f-owner');if(fo)deal.owner=fo.value;
-  const ft=document.getElementById('f-analysis');if(ft)deal.analysis=ft.value;
+  const m={'f-customer':'customer','f-account':'account','f-owner':'owner','f-analysis':'analysis'};
+  Object.entries(m).forEach(([id,k])=>{const el=document.getElementById(id);if(el)deal[k]=el.value;});
 }
-
 function attachListeners(){
-  const map={'f-customer':'customer','f-account':'account','f-owner':'owner','f-analysis':'analysis'};
-  Object.entries(map).forEach(([id,key])=>{
-    const el=document.getElementById(id);
-    if(el)el.addEventListener('input',e=>{deal[key]=e.target.value;},false);
-  });
+  const m={'f-customer':'customer','f-account':'account','f-owner':'owner','f-analysis':'analysis'};
+  Object.entries(m).forEach(([id,k])=>{const el=document.getElementById(id);if(el)el.addEventListener('input',e=>{deal[k]=e.target.value;},false);});
 }
 
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 // ROUTING
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 function V(v){
-  saveFields();
-  view=v;
-  ['new','sub','cat','trm','tir','set'].forEach(k=>{
-    const el=document.getElementById('nav-'+k);if(el)el.classList.toggle('active',k===v);
-  });
+  saveFields();view=v;
+  ['new','sub','cat','trm','tir','set'].forEach(k=>{const el=document.getElementById('nav-'+k);if(el)el.classList.toggle('active',k===v);});
   renderView();
 }
-
 function renderView(){
   const m=document.getElementById('main');if(!m)return;
-  if(view==='new')       m.innerHTML=vNew();
-  else if(view==='sub')  m.innerHTML=vSub();
-  else if(view==='cat')  m.innerHTML=vCat();
-  else if(view==='trm')  m.innerHTML=vTrm();
-  else if(view==='tir')  m.innerHTML=vTir();
-  else if(view==='set')  m.innerHTML=vSet();
-  // attach listeners after DOM update
+  if(view==='new')      m.innerHTML=vNew();
+  else if(view==='sub') m.innerHTML=vSub();
+  else if(view==='cat') m.innerHTML=vCat();
+  else if(view==='trm') m.innerHTML=vTrm();
+  else if(view==='tir') m.innerHTML=vTir();
+  else if(view==='set') m.innerHTML=vSet();
   setTimeout(attachListeners,0);
 }
 
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 // VIEW — NEW DEAL
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 function vNew(){
   const d=deal,an=calcDeal(d),q=d.quotes[d.aq];
   return`
@@ -451,18 +375,21 @@ function vNew(){
     </div>
   </div>
   <div class="content">
+    <!-- METRICS -->
     <div class="deal-header">
       <div class="code-card"><div class="code-lbl">Deal Code</div><div class="code-val">${d.code}</div><div class="code-dt">${new Date(d.created).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})}</div></div>
       <div class="mrow">
-        <div class="mc"><div class="ml">Total TCV</div><div class="mv cb">${fmt(an.tcv)}</div><div class="ms">${d.quotes.length} quote${d.quotes.length!==1?'s':''}</div></div>
-        <div class="mc"><div class="ml">Net ARR</div><div class="mv">${fmt(an.tn)}</div><div class="ms">${fmtP(an.disc)} off list</div></div>
-        <div class="mc"><div class="ml">Gross Margin</div><div class="mv ${mCls(an.mg)}">${fmtP(an.mg)}</div><div class="ms">${fmt(an.gp)} GP</div></div>
-        <div class="mc"><div class="ml">Approval Required</div><div class="mv" style="font-size:13px;margin-top:10px;color:${an.pa.color};font-family:'DM Sans',sans-serif;font-weight:600;">${esc(an.pa.role)}</div><div class="ms">${d.exceptions.length} exception${d.exceptions.length!==1?'s':''}</div></div>
+        <div class="mc"><div class="ml">Total TCV</div><div class="mv cb" id="hd-tcv">${fmt(an.tcv)}</div><div class="ms">${d.quotes.length} quote${d.quotes.length!==1?'s':''}</div></div>
+        <div class="mc"><div class="ml">Net ARR</div><div class="mv" id="hd-arr">${fmt(an.tn)}</div><div class="ms" id="hd-disc">${fmtP(an.disc)} off list</div></div>
+        <div class="mc"><div class="ml">Gross Margin</div><div class="mv ${mCls(an.mg)}" id="hd-mg">${fmtP(an.mg)}</div><div class="ms" id="hd-gp">${fmt(an.gp)} GP</div></div>
+        <div class="mc"><div class="ml">Approval Required</div><div class="mv" id="hd-apr" style="font-size:13px;margin-top:10px;color:${an.pa.color};font-family:'DM Sans',sans-serif;font-weight:600;">${esc(an.pa.role)}</div><div class="ms">${d.exceptions.length} exception${d.exceptions.length!==1?'s':''}</div></div>
       </div>
     </div>
 
+    <!-- APPROVAL TRACK -->
     <div class="sec"><div class="sh"><div><div class="st">Approval Progress</div><div class="ss">Auto-determined · timestamped at each stage</div></div><span class="badge badge-${d.status.toLowerCase().replace(/ /g,'-')}">${d.status}</span></div><div class="sb">${rTrack(d,an)}</div></div>
 
+    <!-- DEAL INFO -->
     <div class="sec"><div class="sh"><div class="st">Deal Information</div></div><div class="sb"><div class="fg">
       <div class="fld"><label>Customer Name *</label><input type="text" id="f-customer" value="${esc(d.customer)}" placeholder="e.g. Acme Corporation Ltd" /></div>
       <div class="fld"><label>Account / Salesforce ID</label><input type="text" id="f-account" value="${esc(d.account)}" placeholder="e.g. 0012X00000ABC" /></div>
@@ -472,35 +399,64 @@ function vNew(){
       <div class="fld"><label>Region</label><select onchange="deal.region=this.value"><option value="" ${!d.region?'selected':''}>Select...</option>${['EMEA','AMER','APAC','Global','LATAM'].map(r=>`<option ${d.region===r?'selected':''}>${r}</option>`).join('')}</select></div>
     </div></div></div>
 
+    <!-- QUOTE BUILDER -->
     <div class="sec">
-      <div class="sh"><div><div class="st">Quote Builder</div><div class="ss">Products loaded live from Google Sheets ${dataLoaded&&PRODS.length>0?`<span class="sheets-badge">↗ ${PRODS.length} products</span>`:''}</div></div><button class="btn btn-sm" onclick="saveFields();addQ()">+ Add Quote</button></div>
+      <div class="sh">
+        <div><div class="st">Quote Builder</div><div class="ss">Products from Google Sheets ${dataLoaded&&PRODS.length>0?`<span class="sheets-badge">↗ ${PRODS.length} products</span>`:''}</div></div>
+        <button class="btn btn-sm" onclick="saveFields();addQ()">+ Add Quote</button>
+      </div>
       <div class="sb">
-        <div class="qtabs">${d.quotes.map((qt,i)=>`<button class="qtab ${i===d.aq?'active':''}" onclick="saveFields();swQ(${i})">${esc(qt.label)}</button>`).join('')}${d.quotes.length>1?`<button class="btn btn-sm btn-danger" onclick="saveFields();rmQ(${d.aq})">Remove</button>`:''}</div>
+        <div class="qtabs">
+          ${d.quotes.map((qt,i)=>`<button class="qtab ${i===d.aq?'active':''}" onclick="saveFields();swQ(${i})">${esc(qt.label)}</button>`).join('')}
+          ${d.quotes.length>1?`<button class="btn btn-sm btn-danger" onclick="saveFields();rmQ(${d.aq})">Remove</button>`:''}
+        </div>
         ${rQBody(q,d.aq)}
       </div>
     </div>
 
+    <!-- QUOTE COMPARISON (multi-quote only) -->
     ${d.quotes.length>1?rQComp(d):''}
 
-    <div class="sec"><div class="sh"><div><div class="st">Non-Standard Terms &amp; Exceptions</div><div class="ss">Each exception may escalate approval tier</div></div>${d.exceptions.length>0?`<span class="badge badge-escalated">${d.exceptions.length} flagged</span>`:''}</div><div class="sb">
-      <div class="fld" style="max-width:380px;margin-bottom:14px;"><label>Add exception</label>
-        <select onchange="saveFields();addE(this.value);this.value=''">
-          <option value="">Select non-standard term...</option>
-          ${TERMS.filter(t=>!d.exceptions.includes(t)).map(t=>`<option value="${esc(t)}">${esc(t)}</option>`).join('')}
-        </select>
+    <!-- NON-STANDARD TERMS — deal level, one section only -->
+    <div class="sec">
+      <div class="sh">
+        <div><div class="st">Non-Standard Terms &amp; Exceptions</div><div class="ss">Deal-level · applies across all quotes</div></div>
+        ${d.exceptions.length>0?`<span class="badge badge-escalated">${d.exceptions.length} flagged</span>`:''}
       </div>
-      <div class="epills">${d.exceptions.length===0?'<span style="font-size:12px;color:var(--dim)">No exceptions · standard terms apply</span>':''}${d.exceptions.map(e=>`<span class="pill pe">${esc(e)}<span class="pr" onclick="saveFields();rmE(${JSON.stringify(e)})">×</span></span>`).join('')}</div>
-    </div></div>
+      <div class="sb">
+        <div class="fld" style="max-width:400px;margin-bottom:14px;"><label>Add exception</label>
+          <select onchange="saveFields();addE(this.value);this.value=''">
+            <option value="">Select non-standard term...</option>
+            ${TERMS.filter(t=>!d.exceptions.includes(t)).map(t=>`<option value="${esc(t)}">${esc(t)}</option>`).join('')}
+          </select>
+        </div>
+        <div class="epills">
+          ${d.exceptions.length===0?'<span style="font-size:12px;color:var(--dim)">No exceptions · standard terms apply</span>':''}
+          ${d.exceptions.map(e=>`<span class="pill pe">${esc(e)}<span class="pr" onclick="saveFields();rmE(${JSON.stringify(e)})">×</span></span>`).join('')}
+        </div>
+      </div>
+    </div>
 
-    <div class="sec"><div class="sh"><div><div class="st">Deal Management Analysis <span class="aib">↗ AI-assisted</span></div><div class="ss">Required before submission</div></div><button class="btn btn-sm" id="aib" onclick="genAI()">Generate Draft ↗</button></div><div class="sb">
-      <div id="ail" style="display:none;margin-bottom:10px;"><div style="font-size:12px;color:var(--muted)">Generating analysis...</div><div class="lbar"><div class="lfill" id="lf"></div></div></div>
-      <textarea id="f-analysis" style="width:100%;background:var(--surface2);border:1px solid var(--border2);border-radius:7px;padding:12px;font-size:13px;color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.65;resize:vertical;min-height:100px;outline:none;" placeholder="Enter deal rationale — commercial justification, competitive context, strategic value, exception reasoning, recommendation...">${esc(d.analysis)}</textarea>
-    </div></div>
+    <!-- DEAL MANAGEMENT ANALYSIS — deal level, one section only -->
+    <div class="sec">
+      <div class="sh">
+        <div><div class="st">Deal Management Analysis <span class="aib">↗ AI-assisted</span></div><div class="ss">Deal-level · required before submission</div></div>
+        <button class="btn btn-sm" id="aib" onclick="genAI()">Generate Draft ↗</button>
+      </div>
+      <div class="sb">
+        <div id="ail" style="display:none;margin-bottom:10px;"><div style="font-size:12px;color:var(--muted)">Generating analysis...</div><div class="lbar"><div class="lfill" id="lf"></div></div></div>
+        <textarea id="f-analysis" style="width:100%;background:var(--surface2);border:1px solid var(--border2);border-radius:7px;padding:12px;font-size:13px;color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.65;resize:vertical;min-height:100px;outline:none;" placeholder="Enter deal rationale — commercial justification, competitive context, strategic value, exception reasoning, recommendation...">${esc(d.analysis)}</textarea>
+      </div>
+    </div>
 
+    <!-- EXECUTIVE SUMMARY -->
     ${d.customer?rExec(d,an):''}
   </div>`;
 }
 
+// ═══════════════════════════════════════════════
+// APPROVAL TRACK
+// ═══════════════════════════════════════════════
 function rTrack(d,an){
   const labels=['Submitted',...TIERS.map(t=>t.role),'Approved'];
   const ids=['submitted',...TIERS.map(t=>t.role.toLowerCase().replace(/\s+/g,'_')),'approved'];
@@ -510,100 +466,269 @@ function rTrack(d,an){
   <div class="atrack">${labels.map((s,i)=>{const id=ids[i];const lg=d.log.find(l=>l.stage===id);const dn=!!lg;const ac=!dn&&i===done.length;return`<div class="astep"><div class="acirc ${dn?'done':ac?'active':''}">${dn?'✓':(i+1)}</div><div class="albl ${ac?'act':''}">${esc(s)}</div><div class="ats">${lg?fmtT(lg.ts):ac?'Awaiting':''}</div></div>`;}).join('')}</div></div>`;
 }
 
+// ═══════════════════════════════════════════════
+// QUOTE BODY — immediate calculation on product select
+// ═══════════════════════════════════════════════
 function rQBody(q,qi){
   if(!dataLoaded)return`<div class="prod-loading"><span class="spinner"></span>&nbsp; Loading from Google Sheets...</div>`;
   if(!PRODS.length)return`<div class="prod-error">⚠ No products found. <button class="btn btn-sm" style="margin-left:12px;" onclick="loadAllData()">Retry</button></div>`;
+
   const rows=q.lines.map((l,li)=>{
     const c=calcLine(l);
     const hp=l.np!==''&&l.np!==null&&!isNaN(l.np);
     const hint=c.p?Math.round(c.p.lp*(1-c.p.sd/100)):'';
-    return`<tr>
-      <td style="min-width:210px;"><select onchange="uL(${qi},${li},'sku',this.value)"><option value="">Choose product...</option>${PRODS.map(p=>`<option value="${p.sku}" ${l.sku===p.sku?'selected':''}>${esc(p.name)}</option>`).join('')}</select></td>
-      <td><input type="number" min="1" max="9999999999" step="1" value="${l.qty}" class="qty-input" onchange="uL(${qi},${li},'qty',+this.value)" /></td>
-      <td class="mono" style="color:var(--muted);width:90px;">${c.p?fmt(c.p.lp):'—'}</td>
-      <td style="width:115px;"><input type="number" min="0" step="100" value="${hp?l.np:''}" placeholder="${hint}" onchange="uL(${qi},${li},'np',this.value===''?'':+this.value)" /></td>
-      <td class="mono tr" style="width:90px;">${c.p?fmt(c.nt):'—'}</td>
-      <td class="tr" style="width:80px;">${c.p?`<span class="${c.over?'ca':'cm'}" style="font-size:12px;">${fmtP(c.disc)}${c.over?' ▲':''}</span>`:'—'}</td>
-      <td class="mono tr ${mCls(c.mg)}" style="width:65px;">${c.p?fmtP(c.mg):'—'}</td>
-      <td style="width:34px;"><button class="btn btn-sm btn-danger" style="padding:4px 6px;" onclick="rmL(${qi},${li})">×</button></td>
+    return`<tr id="line-${qi}-${li}">
+      <td style="min-width:200px;">
+        <select onchange="onSkuChange(${qi},${li},this.value)">
+          <option value="">Choose product...</option>
+          ${PRODS.map(p=>`<option value="${p.sku}" ${l.sku===p.sku?'selected':''}>${esc(p.name)}</option>`).join('')}
+        </select>
+      </td>
+      <td><input type="number" min="1" max="9999999999" step="1" value="${l.qty}" class="qty-input" onchange="onQtyChange(${qi},${li},+this.value)" /></td>
+      <td class="calc" id="lp-${qi}-${li}" style="color:var(--muted);width:88px;">${c.p?fmt(c.p.lp):'—'}</td>
+      <td style="width:110px;"><input type="number" min="0" step="100" value="${hp?l.np:''}" placeholder="${hint}" id="np-${qi}-${li}" onchange="onNpChange(${qi},${li},this.value)" /></td>
+      <td class="calc tr" id="nt-${qi}-${li}" style="width:88px;">${c.p?fmt(c.nt):'—'}</td>
+      <td class="tr" id="dc-${qi}-${li}" style="width:78px;">${c.p?`<span class="${c.over?'ca':'cm'}" style="font-size:12px;">${fmtP(c.disc)}${c.over?' ▲':''}</span>`:'—'}</td>
+      <td class="calc tr ${mCls(c.mg)}" id="mg-${qi}-${li}" style="width:64px;">${c.p?fmtP(c.mg):'—'}</td>
+      <td style="width:32px;"><button class="btn btn-sm btn-danger" style="padding:4px 6px;" onclick="rmL(${qi},${li})">×</button></td>
     </tr>`;
   }).join('');
+
   const qt=calcQuote(q);
-  return`<div class="fg3" style="margin-bottom:16px;max-width:500px;">
-    <div class="fld"><label>Contract Term</label><select onchange="uQ(${qi},'term',+this.value)">${[12,24,36,48,60].map(m=>`<option value="${m}" ${q.term===m?'selected':''}>${m} months</option>`).join('')}</select></div>
-    <div class="fld"><label>Currency</label><select onchange="uQ(${qi},'currency',this.value)">${['GBP','USD','EUR'].map(c=>`<option ${q.currency===c?'selected':''}>${c}</option>`).join('')}</select></div>
-    <div class="fld"><label>Quote Label</label><input type="text" value="${esc(q.label)}" onchange="uQ(${qi},'label',this.value)" /></div>
+  return`
+  <div class="fg3" style="margin-bottom:16px;max-width:500px;">
+    <div class="fld"><label>Contract Term</label>
+      <select id="term-${qi}" onchange="uQ(${qi},'term',+this.value)">
+        ${[12,24,36,48,60].map(m=>`<option value="${m}" ${q.term===m?'selected':''}>${m} months</option>`).join('')}
+      </select>
+    </div>
+    <div class="fld"><label>Currency</label>
+      <select onchange="uQ(${qi},'currency',this.value)">
+        ${['GBP','USD','EUR'].map(c=>`<option ${q.currency===c?'selected':''}>${c}</option>`).join('')}
+      </select>
+    </div>
+    <div class="fld"><label>Quote Label</label>
+      <input type="text" value="${esc(q.label)}" onchange="uQ(${qi},'label',this.value)" />
+    </div>
   </div>
-  <table class="lt"><thead><tr><th>Product</th><th>Qty</th><th>List Price</th><th>Negotiated Unit Price</th><th class="tr">Net Total</th><th class="tr">Discount</th><th class="tr">Margin</th><th></th></tr></thead>
-  <tbody>${rows}</tbody>
-  <tfoot>
-    <tr><td colspan="4" style="font-weight:600;font-size:13px;">Quote Total</td><td class="mono tr" style="font-weight:600;font-size:13px;">${fmt(qt.n)}</td><td class="tr ${dCls(qt.disc)}" style="font-size:12px;font-weight:500;">${fmtP(qt.disc)}</td><td class="mono tr ${mCls(qt.mg)}" style="font-weight:600;">${fmtP(qt.mg)}</td><td></td></tr>
-    <tr><td colspan="4" style="font-size:11px;color:var(--muted);">TCV over ${q.term} months</td><td class="mono tr cb" style="font-size:12px;font-weight:500;">${fmt(qt.tcv)}</td><td colspan="3"></td></tr>
-  </tfoot></table>
+  <table class="lt">
+    <thead><tr>
+      <th>Product</th><th>Qty</th><th>List Price</th>
+      <th>Negotiated Unit Price</th>
+      <th class="tr">Net Total</th><th class="tr">Discount</th><th class="tr">Margin</th><th></th>
+    </tr></thead>
+    <tbody id="lines-${qi}">${rows}</tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4" style="font-weight:600;font-size:13px;">Quote Total</td>
+        <td class="calc tr" id="qt-net-${qi}" style="font-weight:600;font-size:13px;">${fmt(qt.n)}</td>
+        <td class="tr ${dCls(qt.disc)}" id="qt-disc-${qi}" style="font-size:12px;font-weight:500;">${fmtP(qt.disc)}</td>
+        <td class="calc tr ${mCls(qt.mg)}" id="qt-mg-${qi}" style="font-weight:600;">${fmtP(qt.mg)}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td colspan="4" style="font-size:11px;color:var(--muted);">TCV over ${q.term} months</td>
+        <td class="calc tr cb" id="qt-tcv-${qi}" style="font-size:12px;font-weight:500;">${fmt(qt.tcv)}</td>
+        <td colspan="3"></td>
+      </tr>
+    </tfoot>
+  </table>
   <div style="margin-top:12px;"><button class="btn btn-sm" onclick="addL(${qi})">+ Add Line Item</button></div>`;
 }
 
-function rQComp(d){
-  return`<div class="sec"><div class="sh"><div class="st">Quote Comparison</div></div><div class="sb" style="padding:0;"><table class="ct"><thead><tr><th>Quote</th><th>Term</th><th class="tr">Net ARR</th><th class="tr">TCV</th><th class="tr">Discount</th><th class="tr">Margin</th></tr></thead><tbody>${d.quotes.map(q=>{const qt=calcQuote(q);return`<tr><td style="font-weight:500;">${esc(q.label)}</td><td>${q.term} mo</td><td class="mono tr">${fmt(qt.n)}</td><td class="mono tr cb">${fmt(qt.tcv)}</td><td class="tr ${dCls(qt.disc)}">${fmtP(qt.disc)}</td><td class="mono tr ${mCls(qt.mg)}">${fmtP(qt.mg)}</td></tr>`;}).join('')}</tbody></table></div></div>`;
+// ── IMMEDIATE CALC UPDATES (no full re-render) ─────────
+function refreshLineDOM(qi,li){
+  const l=deal.quotes[qi].lines[li];
+  const c=calcLine(l);
+  const lp=document.getElementById(`lp-${qi}-${li}`);
+  const nt=document.getElementById(`nt-${qi}-${li}`);
+  const dc=document.getElementById(`dc-${qi}-${li}`);
+  const mg=document.getElementById(`mg-${qi}-${li}`);
+  if(lp)lp.textContent=c.p?fmt(c.p.lp):'—';
+  if(nt)nt.textContent=c.p?fmt(c.nt):'—';
+  if(dc)dc.innerHTML=c.p?`<span class="${c.over?'ca':'cm'}" style="font-size:12px;">${fmtP(c.disc)}${c.over?' ▲':''}</span>`:'—';
+  if(mg){mg.textContent=c.p?fmtP(c.mg):'—';mg.className=`calc tr ${mCls(c.mg)}`;mg.style.width='64px';}
+  // also update np placeholder
+  const npEl=document.getElementById(`np-${qi}-${li}`);
+  if(npEl&&c.p&&npEl.value==='')npEl.placeholder=Math.round(c.p.lp*(1-c.p.sd/100));
+  refreshQuoteTotalsDOM(qi);
+  refreshHeaderMetrics();
 }
 
+function refreshQuoteTotalsDOM(qi){
+  const q=deal.quotes[qi];
+  const qt=calcQuote(q);
+  const net=document.getElementById(`qt-net-${qi}`);
+  const disc=document.getElementById(`qt-disc-${qi}`);
+  const mg=document.getElementById(`qt-mg-${qi}`);
+  const tcv=document.getElementById(`qt-tcv-${qi}`);
+  if(net)net.textContent=fmt(qt.n);
+  if(disc){disc.textContent=fmtP(qt.disc);disc.className=`tr ${dCls(qt.disc)}`;disc.style.cssText='font-size:12px;font-weight:500;';}
+  if(mg){mg.textContent=fmtP(qt.mg);mg.className=`calc tr ${mCls(qt.mg)}`;mg.style.fontWeight='600';}
+  if(tcv)tcv.textContent=fmt(qt.tcv);
+}
+
+function refreshHeaderMetrics(){
+  const an=calcDeal(deal);
+  const htcv=document.getElementById('hd-tcv');
+  const harr=document.getElementById('hd-arr');
+  const hdisc=document.getElementById('hd-disc');
+  const hmg=document.getElementById('hd-mg');
+  const hgp=document.getElementById('hd-gp');
+  const hapr=document.getElementById('hd-apr');
+  if(htcv)htcv.textContent=fmt(an.tcv);
+  if(harr)harr.textContent=fmt(an.tn);
+  if(hdisc)hdisc.textContent=fmtP(an.disc)+' off list';
+  if(hmg){hmg.textContent=fmtP(an.mg);hmg.className=`mv ${mCls(an.mg)}`;}
+  if(hgp)hgp.textContent=fmt(an.gp)+' GP';
+  if(hapr){hapr.textContent=an.pa.role;hapr.style.color=an.pa.color;}
+}
+
+function onSkuChange(qi,li,sku){
+  deal.quotes[qi].lines[li].sku=sku;
+  deal.quotes[qi].lines[li].np=''; // reset negotiated price on product change
+  const npEl=document.getElementById(`np-${qi}-${li}`);
+  if(npEl)npEl.value='';
+  refreshLineDOM(qi,li);
+}
+function onQtyChange(qi,li,qty){
+  deal.quotes[qi].lines[li].qty=qty;
+  refreshLineDOM(qi,li);
+}
+function onNpChange(qi,li,val){
+  deal.quotes[qi].lines[li].np=val===''?'':+val;
+  refreshLineDOM(qi,li);
+}
+
+// ═══════════════════════════════════════════════
+// QUOTE COMPARISON
+// ═══════════════════════════════════════════════
+function rQComp(d){
+  return`<div class="sec"><div class="sh"><div class="st">Quote Comparison</div><div class="ss">Side by side across all quotes</div></div>
+  <div class="sb" style="padding:0;"><table class="ct"><thead><tr><th>Quote</th><th>Term</th><th class="tr">Net ARR</th><th class="tr">TCV</th><th class="tr">Discount</th><th class="tr">Margin</th></tr></thead>
+  <tbody>${d.quotes.map(q=>{const qt=calcQuote(q);return`<tr><td style="font-weight:500;">${esc(q.label)}</td><td>${q.term} mo</td><td class="mono tr">${fmt(qt.n)}</td><td class="mono tr cb">${fmt(qt.tcv)}</td><td class="tr ${dCls(qt.disc)}">${fmtP(qt.disc)}</td><td class="mono tr ${mCls(qt.mg)}">${fmtP(qt.mg)}</td></tr>`;}).join('')}</tbody>
+  </table></div></div>`;
+}
+
+// ═══════════════════════════════════════════════
+// EXECUTIVE SUMMARY — consolidated across all quotes
+// ═══════════════════════════════════════════════
 function rExec(d,an){
   const sr=(l,v)=>`<div class="srow"><span class="sl">${l}</span><span class="sv">${v}</span></div>`;
-  return`<div class="sec exsec"><div class="sh exhdr"><div><div class="st cb">Executive Summary</div><div class="ss">Auto-generated · for approver review · ${d.code}</div></div><span class="badge badge-${d.status.toLowerCase().replace(/ /g,'-')}">${d.status}</span></div>
-  <div class="sb"><div class="sgrid">
-    <div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Deal Overview</div>${sr('Customer',esc(d.customer)||'—')}${sr('Account',esc(d.account)||'—')}${sr('Deal Code',`<span class="mono cb">${d.code}</span>`)}${sr('Type',d.type)}${sr('Region',d.region||'—')}${sr('Segment',d.segment||'—')}${sr('Owner',esc(d.owner)||'—')}${sr('Quotes',d.quotes.length)}</div>
-    <div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Financial Summary</div>${sr('List Value',`<span class="mono">${fmt(an.tl)}</span>`)}${sr('Total Discount',`<span class="mono ${dCls(an.disc)}">${fmt(an.tl-an.tn)} (${fmtP(an.disc)})</span>`)}${sr('Net ARR',`<span class="mono" style="font-weight:600;">${fmt(an.tn)}</span>`)}${sr('Total TCV',`<span class="mono cb" style="font-weight:600;">${fmt(an.tcv)}</span>`)}${sr('Gross Profit',`<span class="mono">${fmt(an.gp)}</span>`)}${sr('Gross Margin',`<span class="mono ${mCls(an.mg)}">${fmtP(an.mg)}</span>`)}${sr('Required Approval',`<span style="color:${an.pa.color};font-weight:600;">${esc(an.pa.role)}</span>`)}</div>
+  const multiQuote=d.quotes.length>1;
+
+  // Build quote breakdown for multi-quote deals
+  const quoteBreakdown=multiQuote?`
+    <div class="divider"></div>
+    <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Quote Breakdown</div>
+    <table class="qt-table">
+      <thead><tr><th>Quote</th><th>Term</th><th class="tr">Net ARR</th><th class="tr">TCV</th><th class="tr">Discount</th><th class="tr">Margin</th></tr></thead>
+      <tbody>${d.quotes.map(q=>{const qt=calcQuote(q);return`<tr><td style="font-weight:500;">${esc(q.label)}</td><td>${q.term} mo</td><td class="mono tr">${fmt(qt.n)}</td><td class="mono tr cb">${fmt(qt.tcv)}</td><td class="tr ${dCls(qt.disc)}">${fmtP(qt.disc)}</td><td class="mono tr ${mCls(qt.mg)}">${fmtP(qt.mg)}</td></tr>`;}).join('')}</tbody>
+    </table>`:'';
+
+  return`<div class="sec exsec"><div class="sh exhdr">
+    <div><div class="st cb">Executive Summary</div><div class="ss">Consolidated across ${d.quotes.length} quote${d.quotes.length!==1?'s':''} · ${d.code}</div></div>
+    <span class="badge badge-${d.status.toLowerCase().replace(/ /g,'-')}">${d.status}</span>
   </div>
-  ${d.exceptions.length>0?`<div class="divider"></div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Exceptions (${d.exceptions.length})</div><div class="epills">${d.exceptions.map(e=>`<span class="pill pe" style="cursor:default;">${esc(e)}</span>`).join('')}</div>`:''}
-  ${d.analysis?`<div class="divider"></div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Deal Management Commentary</div><div style="font-size:13px;line-height:1.7;">${esc(d.analysis)}</div>`:''}
+  <div class="sb">
+    <div class="sgrid">
+      <div>
+        <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Deal Overview</div>
+        ${sr('Customer',esc(d.customer)||'—')}
+        ${sr('Account',esc(d.account)||'—')}
+        ${sr('Deal Code',`<span class="mono cb">${d.code}</span>`)}
+        ${sr('Type',d.type)}
+        ${sr('Region',d.region||'—')}
+        ${sr('Segment',d.segment||'—')}
+        ${sr('Owner',esc(d.owner)||'—')}
+        ${sr('Quotes',d.quotes.length)}
+      </div>
+      <div>
+        <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Consolidated Financial Summary</div>
+        ${sr('Total List Value',`<span class="mono">${fmt(an.tl)}</span>`)}
+        ${sr('Total Discount',`<span class="mono ${dCls(an.disc)}">${fmt(an.tl-an.tn)} (${fmtP(an.disc)})</span>`)}
+        ${sr('Net ARR (combined)',`<span class="mono" style="font-weight:600;">${fmt(an.tn)}</span>`)}
+        ${sr('Total TCV (combined)',`<span class="mono cb" style="font-weight:600;">${fmt(an.tcv)}</span>`)}
+        ${sr('Gross Profit',`<span class="mono">${fmt(an.gp)}</span>`)}
+        ${sr('Blended Gross Margin',`<span class="mono ${mCls(an.mg)}">${fmtP(an.mg)}</span>`)}
+        ${sr('Required Approval',`<span style="color:${an.pa.color};font-weight:600;">${esc(an.pa.role)}</span>`)}
+      </div>
+    </div>
+    ${quoteBreakdown}
+    ${d.exceptions.length>0?`
+      <div class="divider"></div>
+      <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Deal Exceptions (${d.exceptions.length})</div>
+      <div class="epills">${d.exceptions.map(e=>`<span class="pill pe" style="cursor:default;">${esc(e)}</span>`).join('')}</div>`:''}
+    ${d.analysis?`
+      <div class="divider"></div>
+      <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Deal Management Commentary</div>
+      <div style="font-size:13px;line-height:1.7;">${esc(d.analysis)}</div>`:''}
   </div></div>`;
 }
 
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 // VIEW — ALL DEALS
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 function vSub(){
   const pl=deals.reduce((s,d)=>s+calcDeal(d).tcv,0);
   const am=deals.length?deals.reduce((s,d)=>s+calcDeal(d).mg,0)/deals.length:0;
   const ad=deals.length?deals.reduce((s,d)=>s+calcDeal(d).disc,0)/deals.length:0;
   return`<div class="topbar"><div><h1>All Deal Submissions</h1><p>${deals.length} deal${deals.length!==1?'s':''} on record</p></div><button class="btn btn-primary" onclick="V('new')">+ New Deal</button></div>
   <div class="content">
-  ${deals.length>0?`<div class="mrow" style="margin-bottom:16px;"><div class="mc"><div class="ml">Pipeline TCV</div><div class="mv cb">${fmt(pl)}</div></div><div class="mc"><div class="ml">Avg Gross Margin</div><div class="mv ${mCls(am)}">${fmtP(am)}</div></div><div class="mc"><div class="ml">Avg Blended Discount</div><div class="mv ${dCls(ad)}">${fmtP(ad)}</div></div><div class="mc"><div class="ml">Total Deals</div><div class="mv">${deals.length}</div></div></div>`:''}
+  ${deals.length>0?`<div class="mrow" style="margin-bottom:16px;">
+    <div class="mc"><div class="ml">Pipeline TCV</div><div class="mv cb">${fmt(pl)}</div></div>
+    <div class="mc"><div class="ml">Avg Gross Margin</div><div class="mv ${mCls(am)}">${fmtP(am)}</div></div>
+    <div class="mc"><div class="ml">Avg Blended Discount</div><div class="mv ${dCls(ad)}">${fmtP(ad)}</div></div>
+    <div class="mc"><div class="ml">Total Deals</div><div class="mv">${deals.length}</div></div>
+  </div>`:''}
   <div class="sec"><div class="sh"><div class="st">Submitted Deals</div></div>
-  ${deals.length===0?'<div class="empty">No deals submitted yet.</div>':deals.map(d=>{const an=calcDeal(d);return`<div class="dlr" onclick="openD('${d.code}')"><div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--accent);min-width:110px;">${d.code}</div><div style="flex:1;"><div style="font-size:13px;font-weight:500;">${esc(d.customer)||'Unnamed'}</div><div style="font-size:11px;color:var(--muted);">${d.type} · ${d.region||'—'} · ${d.segment||'—'} · ${esc(d.owner)||'—'}</div></div><div style="text-align:right;"><div style="font-family:'DM Mono',monospace;font-size:13px;font-weight:600;color:var(--accent);">${fmt(an.tcv)}</div><div style="font-size:11px;color:var(--muted);">${fmtP(an.mg)} margin</div></div><span class="badge badge-${d.status.toLowerCase().replace(/ /g,'-')}">${d.status}</span><div style="font-size:11px;color:var(--muted);">${fmtT(d.created)}</div></div>`;}).join('')}
+  ${deals.length===0?'<div class="empty">No deals submitted yet.</div>':deals.map(d=>{const an=calcDeal(d);return`<div class="dlr" onclick="openD('${d.code}')">
+    <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--accent);min-width:110px;">${d.code}</div>
+    <div style="flex:1;"><div style="font-size:13px;font-weight:500;">${esc(d.customer)||'Unnamed'}</div><div style="font-size:11px;color:var(--muted);">${d.type} · ${d.region||'—'} · ${d.segment||'—'} · ${esc(d.owner)||'—'}</div></div>
+    <div style="text-align:right;"><div style="font-family:'DM Mono',monospace;font-size:13px;font-weight:600;color:var(--accent);">${fmt(an.tcv)}</div><div style="font-size:11px;color:var(--muted);">${fmtP(an.mg)} margin</div></div>
+    <span class="badge badge-${d.status.toLowerCase().replace(/ /g,'-')}">${d.status}</span>
+    <div style="font-size:11px;color:var(--muted);">${fmtT(d.created)}</div>
+  </div>`;}).join('')}
   </div></div>`;
 }
 
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 // VIEW — CATALOG
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 function vCat(){
   return`<div class="topbar"><div><h1>Product Catalog</h1><p>Live from Google Sheets · ${TAB_PRODS}</p></div><button class="btn btn-sm" onclick="loadAllData()">↻ Refresh</button></div>
   <div class="content">${!dataLoaded?`<div class="sec"><div class="sb"><div class="prod-loading"><span class="spinner"></span>&nbsp; Loading...</div></div></div>`:
-  PRODS.length===0?`<div class="sec"><div class="sb"><div class="empty">No products found. Check your Sheet tab name is exactly "${TAB_PRODS}".</div></div></div>`:
-  `<div class="sec"><div class="sh"><div class="st">Products &amp; Pricing</div><div class="ss">${PRODS.length} products · edit in Google Sheets to update</div></div><div class="sb" style="padding:0;"><table class="ct"><thead><tr><th>SKU</th><th>Product</th><th>Cat</th><th class="tr">List Price</th><th class="tr">Cost/Unit</th><th class="tr">Std Disc</th><th class="tr">Std Margin</th><th>Unit</th></tr></thead><tbody>${PRODS.map(p=>{const sn=p.lp*(1-p.sd/100),mg=sn>0?((sn-p.cost)/sn*100):0;return`<tr><td class="mono" style="font-size:11px;color:var(--muted);">${esc(p.sku)}</td><td style="font-weight:500;">${esc(p.name)}</td><td>${p.cat?`<span class="tag">${esc(p.cat)}</span>`:''}</td><td class="mono tr">${fmt(p.lp)}</td><td class="mono tr" style="color:var(--muted);">${fmt(p.cost)}</td><td class="tr ca">${p.sd}%</td><td class="mono tr ${mCls(mg)}">${mg.toFixed(1)}%</td><td style="font-size:11px;color:var(--muted);">${esc(p.unit)}</td></tr>`;}).join('')}</tbody></table></div></div>`}
+  PRODS.length===0?`<div class="sec"><div class="sb"><div class="empty">No products found. Check tab name is "${TAB_PRODS}".</div></div></div>`:
+  `<div class="sec"><div class="sh"><div class="st">Products &amp; Pricing</div><div class="ss">${PRODS.length} products · edit your Google Sheet to update</div></div>
+  <div class="sb" style="padding:0;"><table class="ct"><thead><tr><th>SKU</th><th>Product</th><th>Cat</th><th class="tr">List Price</th><th class="tr">Cost/Unit</th><th class="tr">Std Disc</th><th class="tr">Std Margin</th><th>Unit</th></tr></thead>
+  <tbody>${PRODS.map(p=>{const sn=p.lp*(1-p.sd/100),mg=sn>0?((sn-p.cost)/sn*100):0;return`<tr><td class="mono" style="font-size:11px;color:var(--muted);">${esc(p.sku)}</td><td style="font-weight:500;">${esc(p.name)}</td><td>${p.cat?`<span class="tag">${esc(p.cat)}</span>`:''}</td><td class="mono tr">${fmt(p.lp)}</td><td class="mono tr" style="color:var(--muted);">${fmt(p.cost)}</td><td class="tr ca">${p.sd}%</td><td class="mono tr ${mCls(mg)}">${mg.toFixed(1)}%</td><td style="font-size:11px;color:var(--muted);">${esc(p.unit)}</td></tr>`;}).join('')}
+  </tbody></table></div></div>`}
   </div>`;
 }
 
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 // VIEW — TERMS
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 function vTrm(){
   return`<div class="topbar"><div><h1>Non-Standard Terms</h1><p>Live from Google Sheets · ${TAB_TERMS}</p></div><button class="btn btn-sm" onclick="loadAllData()">↻ Refresh</button></div>
-  <div class="content"><div class="sec"><div class="sh"><div class="st">Approved Exception List</div><div class="ss">${TERMS.length} terms · edit in Google Sheets to update</div></div><div class="sb">
-  ${TERMS.length===0?'<div class="empty">No terms loaded yet.</div>':TERMS.map((t,i)=>`<div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);"><span class="mono" style="font-size:11px;color:var(--dim);min-width:22px;">${String(i+1).padStart(2,'0')}</span><span class="pill pe" style="cursor:default;">${esc(t)}</span><span style="font-size:11px;color:var(--muted);margin-left:auto;">Requires approver sign-off</span></div>`).join('')}
+  <div class="content"><div class="sec"><div class="sh"><div class="st">Approved Exception List</div><div class="ss">${TERMS.length} terms · edit your Google Sheet to update</div></div><div class="sb">
+  ${TERMS.length===0?'<div class="empty">No terms loaded yet.</div>':TERMS.map((t,i)=>`<div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);">
+    <span class="mono" style="font-size:11px;color:var(--dim);min-width:22px;">${String(i+1).padStart(2,'0')}</span>
+    <span class="pill pe" style="cursor:default;">${esc(t)}</span>
+    <span style="font-size:11px;color:var(--muted);margin-left:auto;">Requires approver sign-off</span>
+  </div>`).join('')}
   </div></div></div>`;
 }
 
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 // VIEW — TIERS
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 function vTir(){
   const colors=['var(--green)','var(--amber)','var(--red)'];
   const bcs=['rgba(52,201,125,0.2)','rgba(245,166,35,0.2)','rgba(240,96,84,0.2)'];
   return`<div class="topbar"><div><h1>Approval Tiers</h1><p>Live from Google Sheets · ${TAB_TIERS}</p></div><button class="btn btn-sm" onclick="loadAllData()">↻ Refresh</button></div>
   <div class="content">
-  ${TIERS.length===0?`<div class="sec"><div class="sb"><div class="empty">No tiers loaded. Check your Sheet tab is named exactly "${TAB_TIERS}".</div></div></div>`:`
+  ${TIERS.length===0?`<div class="sec"><div class="sb"><div class="empty">No tiers loaded. Check tab name is "${TAB_TIERS}".</div></div></div>`:`
   <div class="mrow" style="grid-template-columns:repeat(${Math.min(TIERS.length,3)},1fr);margin-bottom:20px;">
     ${TIERS.map((t,i)=>`<div class="mc" style="border-color:${bcs[i]||bcs[2]};"><div class="ml">Tier ${i+1} · ${esc(t.tier)}</div><div style="font-size:14px;font-weight:600;margin:10px 0;color:${colors[i]||colors[2]};">${esc(t.role)}</div><div class="ms">Email: <strong>${esc(t.email)}</strong></div><div class="ms">Max Discount: <strong>${t.maxDisc}%</strong></div><div class="ms">Max ARR: <strong>${fmt(t.maxARR)}</strong></div></div>`).join('')}
   </div>
@@ -615,9 +740,9 @@ function vTir(){
   </div>`;
 }
 
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 // VIEW — SETTINGS
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 function vSet(){
   const cn=!!token;
   return`<div class="topbar"><div><h1>Settings</h1><p>Google Sheets &amp; email integration</p></div></div>
@@ -634,22 +759,21 @@ function vSet(){
       Sheet ID: ${SHEET_ID}<br/>
       Products: <strong>${TAB_PRODS}</strong> · Terms: <strong>${TAB_TERMS}</strong> · Tiers: <strong>${TAB_TIERS}</strong> · Deals saved to: <strong>${TAB_DEALS}</strong>
     </div>
-    <div style="font-size:11px;color:var(--dim);margin-top:8px;">All data reads live from your Sheet. Edit the Sheet directly to update products, terms or tiers — then click Reload.</div>
+    <div style="font-size:11px;color:var(--dim);margin-top:8px;">Edit the Sheet directly to update products, terms or tiers — then click Reload.</div>
   </div></div>
   <div class="sec"><div class="sh"><div class="st">Email Notifications</div></div><div class="sb" style="font-size:13px;color:var(--muted);line-height:1.8;">
-    On deal submission, an approval request email is automatically sent to the relevant approver defined in the Approval Tiers tab. Emails are sent from <strong>${esc(user?.email||'your Gmail account')}</strong> via Gmail API.
+    On deal submission, an approval request email is sent automatically to the relevant approver defined in the Approval Tiers tab. Emails are sent from <strong>${esc(user?.email||'your Gmail account')}</strong> via Gmail API.
   </div></div>
-  <div class="sec"><div class="sh"><div class="st">Deals Processed Column Schema</div><div class="ss">Written on each submission to ${TAB_DEALS}</div></div><div class="sb" style="padding:0;"><table class="ct"><thead><tr><th>Col</th><th>Field</th><th>Example</th></tr></thead><tbody>
-    ${[['A','Timestamp','29 Mar 2026 14:30'],['B','Deal Code','DD-2603-48271'],['C','Customer','Acme Corp'],['D','Account ID','0012X000ABC'],['E','Deal Owner','Sarah Smith'],['F','Type','New Business'],['G','Segment','Enterprise'],['H','Region','EMEA'],['I','Quotes','2'],['J','Net ARR (£)','180000'],['K','Total TCV (£)','360000'],['L','List Value (£)','240000'],['M','Blended Discount %','25.0'],['N','Gross Margin %','58.3'],['O','Gross Profit (£)','104940'],['P','Exceptions','MFN clause; Extended payment'],['Q','Required Approver Role','Director'],['R','Approver Email','director@company.com'],['S','Analysis','Commentary...'],['T','Status','Pending Approval']].map(([c,fi,e])=>`<tr><td class="mono" style="color:var(--accent);font-weight:500;">${c}</td><td style="font-weight:500;">${fi}</td><td style="color:var(--muted);font-size:12px;">${e}</td></tr>`).join('')}
+  <div class="sec"><div class="sh"><div class="st">Deals Processed Column Schema</div><div class="ss">Written on each submission</div></div><div class="sb" style="padding:0;"><table class="ct"><thead><tr><th>Col</th><th>Field</th><th>Example</th></tr></thead><tbody>
+    ${[['A','Timestamp','29 Mar 2026 14:30'],['B','Deal Code','DD-2603-48271'],['C','Customer','Acme Corp'],['D','Account ID','0012X000ABC'],['E','Deal Owner','Sarah Smith'],['F','Type','New Business'],['G','Segment','Enterprise'],['H','Region','EMEA'],['I','Quotes','2'],['J','Net ARR (£)','180000'],['K','Total TCV (£)','360000'],['L','List Value (£)','240000'],['M','Blended Discount %','25.0'],['N','Gross Margin %','58.3'],['O','Gross Profit (£)','104940'],['P','Exceptions','MFN clause; Extended payment'],['Q','Approver Role','Director'],['R','Approver Email','director@company.com'],['S','Analysis','Commentary...'],['T','Status','Pending Approval']].map(([c,fi,e])=>`<tr><td class="mono" style="color:var(--accent);font-weight:500;">${c}</td><td style="font-weight:500;">${fi}</td><td style="color:var(--muted);font-size:12px;">${e}</td></tr>`).join('')}
   </tbody></table></div></div>
   </div>`;
 }
 
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 // ACTIONS
-// ═══════════════════════════════════════════════════════
-function uQ(qi,k,v){deal.quotes[qi][k]=v;}
-function uL(qi,li,k,v){deal.quotes[qi].lines[li][k]=v;}
+// ═══════════════════════════════════════════════
+function uQ(qi,k,v){deal.quotes[qi][k]=v;renderView();}
 function swQ(i){deal.aq=i;renderView();}
 function addQ(){deal.quotes.push(nq(deal.quotes.length+1));deal.aq=deal.quotes.length-1;renderView();}
 function rmQ(i){if(deal.quotes.length<=1)return;deal.quotes.splice(i,1);deal.aq=Math.max(0,i-1);renderView();}
@@ -660,9 +784,9 @@ function rmE(v){deal.exceptions=deal.exceptions.filter(e=>e!==v);renderView();}
 function resetDeal(){if(confirm('Reset the current deal form?')){deal=nd();renderView();}}
 function openD(code){const d=deals.find(x=>x.code===code);if(d){deal=JSON.parse(JSON.stringify(d));V('new');}}
 
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 // SUBMIT
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 async function submitDeal(){
   saveFields();
   const d=deal,an=calcDeal(d);
@@ -670,118 +794,47 @@ async function submitDeal(){
   if(!d.owner.trim()){showToast('Please enter a deal owner.','error');return;}
   if(an.tn===0){showToast('Please add at least one product line.','error');return;}
   if(!d.analysis.trim()){showToast('Please add a deal management analysis before submitting.','error');return;}
-
-  d.status='Pending Approval';
-  d.submitted=new Date().toISOString();
+  d.status='Pending Approval';d.submitted=new Date().toISOString();
   d.log=[{stage:'submitted',ts:new Date().toISOString(),by:d.owner}];
-
-  const copy=JSON.parse(JSON.stringify(d));
-  deals.push(copy);
-
+  const copy=JSON.parse(JSON.stringify(d));deals.push(copy);
   await saveToDealsSheet(copy,an);
   await sendApprovalEmail(copy,an);
-
   showToast(`Deal ${d.code} submitted · saved to Sheets · approver notified ✓`,'success');
-  deal=nd();
-  renderView();
+  deal=nd();renderView();
 }
 
-// ═══════════════════════════════════════════════════════
-// SAVE TO DEALS PROCESSED SHEET
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
+// SAVE TO SHEET
+// ═══════════════════════════════════════════════
 async function saveToDealsSheet(d,an){
-  if(!token){showToast('Not connected to Sheets — saved locally only.','error');return;}
-  const row=[[
-    new Date().toLocaleString('en-GB'),
-    d.code,d.customer,d.account,d.owner,d.type,d.segment,d.region,
-    d.quotes.length,
-    Math.round(an.tn),Math.round(an.tcv),Math.round(an.tl),
-    an.disc.toFixed(1),an.mg.toFixed(1),Math.round(an.gp),
-    d.exceptions.join('; '),
-    an.pa.role,an.pa.email,
-    d.analysis,d.status,
-  ]];
+  if(!token){showToast('Not connected to Sheets.','error');return;}
+  const row=[[new Date().toLocaleString('en-GB'),d.code,d.customer,d.account,d.owner,d.type,d.segment,d.region,d.quotes.length,Math.round(an.tn),Math.round(an.tcv),Math.round(an.tl),an.disc.toFixed(1),an.mg.toFixed(1),Math.round(an.gp),d.exceptions.join('; '),an.pa.role,an.pa.email,d.analysis,d.status]];
   try{
-    const res=await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(TAB_DEALS+'!A:T')}:append?valueInputOption=RAW`,{
-      method:'POST',
-      headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},
-      body:JSON.stringify({values:row}),
-    });
+    const res=await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(TAB_DEALS+'!A:T')}:append?valueInputOption=RAW`,{method:'POST',headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify({values:row})});
     if(!res.ok){const e=await res.json();showToast('Sheets error: '+(e.error?.message||'Unknown'),'error');}
   }catch(e){showToast('Could not save to Sheets: '+e.message,'error');}
 }
 
-// ═══════════════════════════════════════════════════════
-// SEND EMAIL VIA GMAIL API
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
+// SEND EMAIL
+// ═══════════════════════════════════════════════
 async function sendApprovalEmail(d,an){
   if(!token)return;
-  if(!an.pa.email){showToast('No approver email found in Approval Tiers Sheet — email not sent.','error');return;}
-
-  const subject=`[DealDesk Pro] Approval Required — ${d.code} — ${esc(d.customer)}`;
-  const body=[
-    `Dear ${an.pa.role},`,
-    ``,
-    `A new deal has been submitted and requires your approval.`,
-    ``,
-    `DEAL SUMMARY`,
-    `${'─'.repeat(40)}`,
-    `Deal Code:        ${d.code}`,
-    `Customer:         ${d.customer}`,
-    `Account ID:       ${d.account||'—'}`,
-    `Deal Owner:       ${d.owner}`,
-    `Deal Type:        ${d.type}`,
-    `Segment:          ${d.segment||'—'}`,
-    `Region:           ${d.region||'—'}`,
-    `Submitted:        ${new Date(d.submitted).toLocaleString('en-GB')}`,
-    ``,
-    `FINANCIAL SUMMARY`,
-    `${'─'.repeat(40)}`,
-    `List Value:       ${fmt(an.tl)}`,
-    `Net ARR:          ${fmt(an.tn)}`,
-    `Total TCV:        ${fmt(an.tcv)}`,
-    `Blended Discount: ${fmtP(an.disc)}`,
-    `Gross Margin:     ${fmtP(an.mg)}`,
-    `Gross Profit:     ${fmt(an.gp)}`,
-    ``,
-    `DEAL EXCEPTIONS (${d.exceptions.length})`,
-    `${'─'.repeat(40)}`,
-    d.exceptions.length>0?d.exceptions.map((e,i)=>`${i+1}. ${e}`).join('\n'):'None — standard terms apply',
-    ``,
-    `DEAL MANAGEMENT ANALYSIS`,
-    `${'─'.repeat(40)}`,
-    d.analysis||'No analysis provided.',
-    ``,
-    `${'─'.repeat(40)}`,
-    `Please review and approve or escalate this deal at your earliest convenience.`,
-    ``,
-    `This is an automated notification from DealDesk Pro.`,
-  ].join('\r\n');
-
-  const raw=[
-    `To: ${an.pa.email}`,
-    `From: ${user.email}`,
-    `Subject: ${subject}`,
-    `Content-Type: text/plain; charset=utf-8`,
-    ``,
-    body,
-  ].join('\r\n');
-
+  if(!an.pa.email){showToast('No approver email found in Approval Tiers Sheet.','error');return;}
+  const subject=`[DealDesk Pro] Approval Required — ${d.code} — ${d.customer}`;
+  const quoteLines=d.quotes.map((q,i)=>{const qt=calcQuote(q);return`  ${q.label}: Net ARR ${fmt(qt.n)} · TCV ${fmt(qt.tcv)} · ${fmtP(qt.disc)} discount · ${fmtP(qt.mg)} margin (${q.term} months)`;}).join('\n');
+  const body=[`Dear ${an.pa.role},`,``,`A new deal has been submitted and requires your approval.`,``,`DEAL SUMMARY`,`${'─'.repeat(42)}`,`Deal Code:        ${d.code}`,`Customer:         ${d.customer}`,`Account ID:       ${d.account||'—'}`,`Deal Owner:       ${d.owner}`,`Deal Type:        ${d.type}`,`Segment:          ${d.segment||'—'}`,`Region:           ${d.region||'—'}`,`Submitted:        ${new Date(d.submitted).toLocaleString('en-GB')}`,``,`QUOTE SUMMARY (${d.quotes.length} quote${d.quotes.length!==1?'s':''})`,`${'─'.repeat(42)}`,quoteLines,``,`CONSOLIDATED FINANCIALS`,`${'─'.repeat(42)}`,`Total List Value: ${fmt(an.tl)}`,`Net ARR:          ${fmt(an.tn)}`,`Total TCV:        ${fmt(an.tcv)}`,`Blended Discount: ${fmtP(an.disc)}`,`Gross Margin:     ${fmtP(an.mg)}`,`Gross Profit:     ${fmt(an.gp)}`,``,`DEAL EXCEPTIONS (${d.exceptions.length})`,`${'─'.repeat(42)}`,d.exceptions.length>0?d.exceptions.map((e,i)=>`${i+1}. ${e}`).join('\n'):'None — standard terms apply',``,`DEAL MANAGEMENT ANALYSIS`,`${'─'.repeat(42)}`,d.analysis||'No analysis provided.',``,`${'─'.repeat(42)}`,`Please review and approve or escalate this deal at your earliest convenience.`,``,`This is an automated notification from DealDesk Pro.`].join('\r\n');
+  const raw=[`To: ${an.pa.email}`,`From: ${user.email}`,`Subject: ${subject}`,`Content-Type: text/plain; charset=utf-8`,``,body].join('\r\n');
   const encoded=btoa(unescape(encodeURIComponent(raw))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
-
   try{
-    const res=await fetch('https://gmail.googleapis.com/gmail/v1/users/me/messages/send',{
-      method:'POST',
-      headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},
-      body:JSON.stringify({raw:encoded}),
-    });
+    const res=await fetch('https://gmail.googleapis.com/gmail/v1/users/me/messages/send',{method:'POST',headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify({raw:encoded})});
     if(!res.ok){const e=await res.json();showToast('Email error: '+(e.error?.message||'Unknown'),'error');}
   }catch(e){showToast('Could not send email: '+e.message,'error');}
 }
 
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 // AI ANALYSIS
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 async function genAI(){
   saveFields();
   const d=deal,an=calcDeal(d);
@@ -790,44 +843,29 @@ async function genAI(){
   if(btn){btn.disabled=true;btn.innerHTML='<span class="spinner"></span> Generating...';}
   if(ld)ld.style.display='block';
   let p=0;const iv=setInterval(()=>{p=Math.min(p+7,85);if(lf)lf.style.width=p+'%';},200);
+  const quoteDetails=d.quotes.map((q,i)=>{const qt=calcQuote(q);return`Quote ${i+1} (${q.label}): ${q.term}mo · Net ARR ${fmt(qt.n)} · TCV ${fmt(qt.tcv)} · ${fmtP(qt.disc)} discount · ${fmtP(qt.mg)} margin`;}).join('\n');
   const prompt=`You are a Deal Desk analyst at a cybersecurity SaaS company. Write an executive-level deal analysis (3-4 short paragraphs, under 200 words) for an approver. Direct, commercial, data-driven. Flowing prose — no bullet points.
 
-Deal: ${d.customer} | ${d.type} | ${d.segment||'n/a'} | ${d.region||'n/a'} | Owner: ${d.owner}
-Quotes: ${d.quotes.length} | Terms: ${d.quotes.map(q=>q.term+'mo').join(', ')}
-Net ARR: £${Math.round(an.tn).toLocaleString('en-GB')} | TCV: £${Math.round(an.tcv).toLocaleString('en-GB')} | List: £${Math.round(an.tl).toLocaleString('en-GB')}
-Blended Discount: ${an.disc.toFixed(1)}% (standard: ${an.sda.toFixed(1)}%) | Gross Margin: ${an.mg.toFixed(1)}%
+Customer: ${d.customer} | ${d.type} | ${d.segment||'n/a'} | ${d.region||'n/a'} | Owner: ${d.owner}
+${d.quotes.length>1?`Multiple quotes (${d.quotes.length}):\n${quoteDetails}`:`Single quote: ${d.quotes[0]?.term}mo`}
+Consolidated: Net ARR £${Math.round(an.tn).toLocaleString('en-GB')} · TCV £${Math.round(an.tcv).toLocaleString('en-GB')} · List £${Math.round(an.tl).toLocaleString('en-GB')}
+Blended Discount: ${an.disc.toFixed(1)}% (standard avg: ${an.sda.toFixed(1)}%) | Gross Margin: ${an.mg.toFixed(1)}%
 Exceptions: ${d.exceptions.length>0?d.exceptions.join('; '):'None'} | Required Approval: ${an.pa.role}
 
-Cover: commercial overview, discount/margin rationale, exceptions (if any), strategic fit, clear recommendation.`;
-
+Cover: commercial overview, discount/margin rationale${d.quotes.length>1?', comparison across quotes':''},  exceptions (if any), strategic fit, clear recommendation.`;
   try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]}),
-    });
-    const data=await res.json();
-    clearInterval(iv);if(lf)lf.style.width='100%';
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})});
+    const data=await res.json();clearInterval(iv);if(lf)lf.style.width='100%';
     const txt=data.content?.find(c=>c.type==='text')?.text||'';
     if(txt){deal.analysis=txt;if(ta)ta.value=txt;}
   }catch(e){clearInterval(iv);showToast('Could not generate: '+e.message,'error');}
-
-  setTimeout(()=>{
-    if(ld)ld.style.display='none';
-    if(lf)lf.style.width='0';
-    if(btn){btn.disabled=false;btn.innerHTML='Generate Draft ↗';}
-  },500);
+  setTimeout(()=>{if(ld)ld.style.display='none';if(lf)lf.style.width='0';if(btn){btn.disabled=false;btn.innerHTML='Generate Draft ↗';}},500);
 }
 
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 // TOAST
-// ═══════════════════════════════════════════════════════
-function showToast(msg,type='info'){
-  const el=document.getElementById('toast');
-  el.textContent=msg;
-  el.className='toast show '+(type||'');
-  setTimeout(()=>el.classList.remove('show'),5000);
-}
+// ═══════════════════════════════════════════════
+function showToast(msg,type='info'){const el=document.getElementById('toast');el.textContent=msg;el.className='toast show '+(type||'');setTimeout(()=>el.classList.remove('show'),5000);}
 </script>
 </body>
 </html>
